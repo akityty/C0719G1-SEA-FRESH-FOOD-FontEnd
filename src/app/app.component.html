@@ -13,12 +13,20 @@
         <div class="icon">
           <i class="fa fa-user" style="font-size:40px;color:#fff"></i>
         </div>
-        <ul class="content_hotline">
+
+        <ul class="content_hotline" *ngIf="userService.userOnline.email===''">
           <li>
             <a class="register" routerLink="/create-user">Đăng ký</a>
           </li>
           <li><a routerLink="/add" class="login">Đăng nhâp </a></li>
         </ul>
+        <ul class="content_hotline" *ngIf="userService.userOnline.email!==''">
+          <li>
+            <a class="register" routerLink="/create-user">{{userService.userOnline.email}}</a>
+          </li>
+          <li><a routerLink="logout" class="login">Logout</a></li>
+        </ul>
+
       </div>
     </div>
   </header>

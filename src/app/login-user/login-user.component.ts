@@ -24,6 +24,7 @@ export class LoginUserComponent implements OnInit {
   submit() {
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(next => {
+        this.userService.userOnline = {email: this.loginForm.get('email').value, password: this.loginForm.get('password').value};
         this.message = 'Bạn đã đăng nhập thành công!';
       }, error => {
         if (error.valueOf().status === 400) {

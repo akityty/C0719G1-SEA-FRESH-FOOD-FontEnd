@@ -8,12 +8,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import { LoginUserComponent } from './login-user/login-user.component';
+import { LogoutUserComponent } from './logout-user/logout-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateUserComponent,
-    LoginUserComponent
+    LoginUserComponent,
+    LogoutUserComponent
   ],
   imports: [
     BrowserModule,

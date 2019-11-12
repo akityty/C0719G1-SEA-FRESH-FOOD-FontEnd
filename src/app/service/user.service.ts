@@ -8,6 +8,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
+  userOnline: IUser = {email: '', password: ''};
   private readonly API_URL = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) { }

@@ -6,94 +6,62 @@
 </head>
 <body>
 
-
-
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <h3 class="title">Đăng ký</h3>
-<!--=======-->
-<!--<div class="col-sm-12 message" *ngIf="message">-->
-<!--  <p class="message">{{message}}</p>-->
-<!--</div>-->
-<!--<form novalidate (ngSubmit)="addUser()" [formGroup]="data" class="row justify-content-md-center">-->
-<!--  <div class="col-sm-9">-->
-<!--    <div class="form-group row">-->
-<!--      <label class="col-md-4 col-form-label">Email-->
-<!--      <div class="col-md-5">-->
-<!--        <input class="form-control" type="text" formControlName="email">-->
-<!--        <div class="alert-danger" role="alert"-->
-<!--             *ngIf="data.get('email').invalid && data.get('email').touched">-->
-<!--          không đúng định dạng email-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      </label>-->
-<!--&gt;>>>>>> 5d27ab551988f7c5a52b8d5dd6a227340df3422a-->
     </div>
     <div class="col-sm-12 message" *ngIf="message">
       <p class="message">{{message}}</p>
     </div>
 
-
-      <form novalidate (ngSubmit)="addUser()" [formGroup]="data" class="justify-content-md-center form_login">
-        <div class="col-lg-6">
-          <div class="form-group ">
-            <input class="form-control" type="text" formControlName="email" placeholder="Email">
-            <div class="alert-danger" role="alert"
-                 *ngIf="data.get('email').invalid && data.get('email').touched">
-              Không đúng định dạng email!
-            </div>
-          </div>
-
-        </div>
-        <div class="col-lg-6">
-          <div class="form-group">
-            <input class="form-control" type="text" formControlName="password" placeholder="Password">
-            <div class="alert-danger" role="alert"
-                 *ngIf="data.get('password').invalid && data.get('password').touched">
-              Mật khẩu gồm 6 ký tự!
-            </div>
+    <form novalidate (ngSubmit)="addUser()" [formGroup]="data" class="justify-content-md-center form_login">
+      <div class="col-lg-6">
+        <div class="form-group ">
+          <input class="form-control" type="text" formControlName="email" placeholder="Email">
+          <div class="alert-danger" role="alert"
+               *ngIf="data.get('email').invalid && data.get('email').touched">
+            Không đúng định dạng email!
           </div>
         </div>
-        <div class="col-lg-6">
-          <span class="morelog">Tôi đã đọc và đồng ý với điều khoản của Minimart</span>
-        </div>
 
-<!--  <div class="col-sm-9">-->
-<!--    <div class="form-group row">-->
-<!--      <label class="col-md-4 col-form-label">Password-->
-<!--      <div class="col-md-5">-->
-<!--        <input class="form-control" type="text" formControlName="password">-->
-<!--        <div class="alert-danger" role="alert" *ngIf="data.get('password').invalid && data.get('password').touched">-->
-<!--          ít nhất là 6 ký tự và nhiều nhất 16 ký tự-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      </label>-->
-<!--    </div>-->
-<!--  </div>-->
-
-  <div class="col-sm-9">
-    <div class="form-group row">
-      <label class="col-md-4 col-form-label">ConfirmPassword
-      <div class="col-md-5">
-        <input class="form-control" type="text" formControlName="confirmPassword">
-        <div class="alert-danger" role="alert" *ngIf="data.hasError('notSame') && data.get('confirmPassword').touched">
-          Password không giống
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <input class="form-control" type="text" formControlName="password" placeholder="Password">
+          <div class="alert-danger" role="alert"
+               *ngIf="data.get('password').invalid && data.get('password').touched">
+            Mật khẩu gồm 6 ký tự!
+          </div>
         </div>
       </div>
-      </label>
-    </div>
-  </div>
+      <div class="col-lg-6">
+        <span class="morelog">Tôi đã đọc và đồng ý với điều khoản của Minimart</span>
+      </div>
 
-        <div class="col-lg-6">
-          <div class="form-group">
-            <input class="submit" type="submit" value="Đăng ký ngay">
-          </div>
+      <div class="col-sm-9">
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label">ConfirmPassword
+            <div class="col-md-5">
+              <input class="form-control" type="text" formControlName="confirmPassword">
+              <div class="alert-danger" role="alert"
+                   *ngIf="data.hasError('notSame') && data.get('confirmPassword').touched">
+                Password không giống
+              </div>
+            </div>
+          </label>
         </div>
+      </div>
 
-      </form>
-    </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <input class="submit" type="submit" value="Đăng ký ngay">
+        </div>
+      </div>
+
+    </form>
   </div>
+</div>
 
 
 </body>
