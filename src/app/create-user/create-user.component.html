@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng ký</title>
+</head>
+<body>
+<div class="col-sm-12 message" *ngIf="message">
+  <p class="message">{{message}}</p>
+</div>
+<form novalidate (ngSubmit)="addUser()" [formGroup]="data" class="row justify-content-md-center">
+  <div class="col-sm-9">
+    <div class="form-group row">
+      <label class="col-md-4 col-form-label">Email:</label>
+      <div class="col-md-5">
+        <input class="form-control" type="text" formControlName="email">
+        <div class="alert-danger" role="alert"
+             *ngIf="data.get('email').invalid && data.get('email').touched">
+          Bạn cần nhập email!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-9">
+    <div class="form-group row">
+      <label class="col-md-4 col-form-label">Password:</label>
+      <div class="col-md-5">
+        <input class="form-control" type="text" formControlName="password">
+        <div class="alert-danger" role="alert" *ngIf="data.get('password').invalid && data.get('password').touched">
+          Bạn cần nhập password!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-9">
+    <div class="form-group row">
+      <input class="submit" type="submit" value="Đăng ký">
+    </div>
+  </div>
+
+</form>
+</body>
+</html>

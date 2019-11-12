@@ -1,0 +1,27 @@
+.justify-content-md-center{
+  margin-top: 30px;
+}
+.submit{
+  width: 150px !important;
+  background: #007bff;
+  color: white;
+  padding: 0px 20px;
+  margin: 0px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  height: 40px;
+  margin-top: 30px;
+  position: absolute;
+  right: 50%;
+}
+.form-group row{
+  position: relative;
+}
+.message{
+  color:#C37736;
+  text-align: center;
+  padding-top:20px;
+
+}
