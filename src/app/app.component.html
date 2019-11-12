@@ -6,19 +6,27 @@
 </head>
 
 <body>
+<div class="container-fluid">
+  <header class="row">
+    <div class="menu">
+      <div class="hotline">
+        <div class="icon">
+          <i class="fa fa-user" style="font-size:40px;color:#fff"></i>
+        </div>
+        <ul class="content_hotline">
+          <li>
+            <a class="register" routerLink="/create-user">Đăng ký</a>
+          </li>
+          <li><a routerLink="/add" class="login">Đăng nhâp </a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
 
-<div class="top_header">
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 </div>
-
-
-<div>
-  <a  class="menu" routerLink="/create-user">Đăng ký</a> <span class="xo">|</span> <a routerLink="/add" class="menu">Đăng nhâp </a>
-</div>
-
-<div>
-  <router-outlet></router-outlet>
-</div>
-
 
 </body>
 </html>

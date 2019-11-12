@@ -8,7 +8,7 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class UserService {
-  private readonly API_URL = 'http://localhost:8080/api/save';
+  private readonly API_URL = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) { }
   getUsers(count = 10): Observable<IUser[]> {

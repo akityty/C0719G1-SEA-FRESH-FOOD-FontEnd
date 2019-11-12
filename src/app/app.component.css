@@ -1,0 +1,36 @@
+.menu {
+  background: #fb7c39;
+  height: 100px !important;
+  width: 100%;
+}
+
+.register {
+  color: #fff;
+}
+
+.login {
+  color: #fff;
+}
+
+.xo {
+  color: #fff;
+}
+
+.hotline {
+  display: inline-block;
+  padding-top: 30px;
+  padding-right: 40px;
+  float: right;
+  width: 200px;
+}
+
+.content_hotline {
+  list-style: none;
+}
+.icon{
+  display: inline-block;
+  float: left;
+}
+/*.fa-user-alt:before {*/
+/*  content: "\f406";*/
+/*}*/
