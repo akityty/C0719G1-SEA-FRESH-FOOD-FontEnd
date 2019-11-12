@@ -25,7 +25,11 @@ export class LoginUserComponent implements OnInit {
     this.userService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(next => {
         this.message = 'Bạn đã đăng nhập thành công!';
       }, error => {
-        this.message = 'Bạn đã đăng nhập thất bại';
-      });
+      if (error.valueOf().status === 400) {
+        this.message = 'sai mật khẩu';
+      } else {
+        this.message = 'không tìm thây tài khoản';
+      }
+    });
   }
 }
