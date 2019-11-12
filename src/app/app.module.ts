@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
+import { LoginUserComponent } from './login-user/login-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    LoginUserComponent
   ],
   imports: [
     BrowserModule,
