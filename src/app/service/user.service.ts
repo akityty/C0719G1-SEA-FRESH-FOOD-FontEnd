@@ -10,6 +10,8 @@ import {map} from 'rxjs/operators';
 export class UserService {
   private readonly API_URL = 'http://localhost:8080/api';
 
+  // http://localhost:8080/api/checkLogin?email=a@gmail.com&&password=123
+
   constructor(private http: HttpClient) { }
   getUsers(count = 10): Observable<IUser[]> {
     return this.http.get<IUser[]>(this.API_URL).pipe(
@@ -19,7 +21,11 @@ export class UserService {
     getById(id: number): Observable<IUser> {
       return this.http.get<IUser>(`${this.API_URL}/${id}`);
   }
+
   createUser(user: Partial<IUser>): Observable<IUser> {
     return this.http.post<IUser>(this.API_URL, user);
+  }
+  login(email: string, password: string) {
+    return this.http.get(`${this.API_URL}/checkLogin?email=${email}&&password=${password}`);
   }
 }

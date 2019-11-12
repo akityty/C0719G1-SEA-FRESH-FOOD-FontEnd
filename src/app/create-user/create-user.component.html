@@ -11,7 +11,7 @@
 <form novalidate (ngSubmit)="addUser()" [formGroup]="data" class="row justify-content-md-center">
   <div class="col-sm-9">
     <div class="form-group row">
-      <label class="col-md-4 col-form-label">Email</label>
+      <label class="col-md-4 col-form-label">Email
       <div class="col-md-5">
         <input class="form-control" type="text" formControlName="email">
         <div class="alert-danger" role="alert"
@@ -19,36 +19,35 @@
           không đúng định dạng email
         </div>
       </div>
+      </label>
     </div>
   </div>
 
   <div class="col-sm-9">
     <div class="form-group row">
-      <label class="col-md-4 col-form-label">Password</label>
+      <label class="col-md-4 col-form-label">Password
       <div class="col-md-5">
         <input class="form-control" type="text" formControlName="password">
         <div class="alert-danger" role="alert" *ngIf="data.get('password').invalid && data.get('password').touched">
           ít nhất là 6 ký tự và nhiều nhất 16 ký tự
         </div>
       </div>
+      </label>
     </div>
   </div>
 
   <div class="col-sm-9">
     <div class="form-group row">
-      <label class="col-md-4 col-form-label">ConfirmPassword </label>
+      <label class="col-md-4 col-form-label">ConfirmPassword
       <div class="col-md-5">
         <input class="form-control" type="text" formControlName="confirmPassword">
         <div class="alert-danger" role="alert" *ngIf="data.hasError('notSame') && data.get('confirmPassword').touched">
           Password không giống
         </div>
       </div>
+      </label>
     </div>
   </div>
-
-
-
-
 
   <div class="col-sm-9">
     <div class="form-group row">
