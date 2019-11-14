@@ -1,48 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Đăng ký</title>
-</head>
-<body>
-<div class="col-sm-12 message" *ngIf="message">
-  <p class="message">{{message}}</p>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Đăng ký</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="col-sm-12 message" *ngIf="message">-->
+<!--  <p class="message">{{message}}</p>-->
+<!--</div>-->
+
+<!--<form novalidate (ngSubmit)="submit()" [formGroup]="loginForm" class="row justify-content-md-center">-->
+<!--<div class="col-sm-9">-->
+<!--  <div class="form-group row">-->
+<!--    <label class="col-md-4 col-form-label">Email-->
+<!--      <div class="col-md-5">-->
+<!--        <input class="form-control" type="text" formControlName="email">-->
+<!--        <div class="alert-danger" role="alert"-->
+<!--             *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">-->
+<!--          Không đúng định dạng email!-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </label>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="col-sm-9">-->
+<!--  <div class="form-group row">-->
+<!--    <label class="col-md-4 col-form-label">Password-->
+<!--      <div class="col-md-5">-->
+<!--        <input class="form-control" type="password" formControlName="password">-->
+<!--        <div class="alert-danger" role="alert" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">-->
+<!--         Mật khẩu gồm 6 ký tự!-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </label>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--  <div class="col-sm-9">-->
+<!--    <div class="form-group row">-->
+<!--      <input class="submit" type="submit" value="Đăng Nhập">-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+<div *ngIf="isLoggedIn; else loggedOut">
+  Logged in as {{roles}}.
 </div>
 
-<form novalidate (ngSubmit)="submit()" [formGroup]="loginForm" class="row justify-content-md-center">
-<div class="col-sm-9">
-  <div class="form-group row">
-    <label class="col-md-4 col-form-label">Email
-      <div class="col-md-5">
-        <input class="form-control" type="text" formControlName="email">
-        <div class="alert-danger" role="alert"
-             *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
-          Không đúng định dạng email!
+<ng-template #loggedOut>
+  <div class="row col-sm-6" style="max-width:350px;">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
+               required />
+        <div *ngIf="f.submitted && username.invalid">
+          <div *ngIf="username.errors.required">Username is required</div>
         </div>
       </div>
-    </label>
-  </div>
-</div>
-
-<div class="col-sm-9">
-  <div class="form-group row">
-    <label class="col-md-4 col-form-label">Password
-      <div class="col-md-5">
-        <input class="form-control" type="password" formControlName="password">
-        <div class="alert-danger" role="alert" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
-         Mật khẩu gồm 6 ký tự!
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
+               required minlength="6" />
+        <div *ngIf="f.submitted && password.invalid">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
         </div>
       </div>
-    </label>
+      <div class="form-group">
+        <button class="btn btn-primary">Login</button>
+        <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+          Login failed: {{errorMessage}}
+        </div>
+      </div>
+    </form>
+    <hr />
+    <p>Don't have an account?</p>
+    <a href="signup" class="btn btn-success">Sign Up</a>
   </div>
-</div>
-
-  <div class="col-sm-9">
-    <div class="form-group row">
-      <input class="submit" type="submit" value="Đăng Nhập">
-    </div>
-  </div>
-
-</form>
-</body>
-</html>
+</ng-template>

@@ -16,8 +16,7 @@
             <div class="col-lg-3">
               <div class="logo">
                 <a href="/" class="logo-wrapper ">
-                  <img src="https://bizweb.dktcdn.net/100/350/980/themes/714097/assets/logo.png?1572227969500"
-                       alt="logo Minimart">
+                  <img src="../assets/image/logo.png" height="80" width="230"/>
                 </a>
               </div>
             </div>
@@ -33,65 +32,32 @@
                             <ul class="item_big">
 
                               <li class="nav-item active ">
-                                <a class="a-img" href="https://cool-organic.bizwebvietnam.net/">
+                                <a class="a-img" routerLink="home">
                                   <span>Trang chủ</span>
                                 </a>
                               </li>
 
                               <li class="nav-item ">
-                                <a class="a-img" href="https://cool-organic.bizwebvietnam.net/gioi-thieu">
+                                <a class="a-img">
                                   <span>Giới thiệu</span>
                                 </a>
                               </li>
                               <li class="nav-item ">
-                                <a class="a-img" href="https://cool-organic.bizwebvietnam.net/collections/all">
+                                <a class="a-img">
                                   <span>Sản phẩm</span><i class="fa fa-caret-down"></i>
                                 </a>
-<!--                                <ul class="item_small hidden-sm hidden-xs">-->
-
-<!--                                  <li>-->
-<!--                                    <a href="https://cool-organic.bizwebvietnam.net/rau-cu" title="">Rau củ </a>-->
-
-<!--                                  </li>-->
-
-<!--                                  <li>-->
-<!--                                    <a href="https://cool-organic.bizwebvietnam.net/hoa-qua" title="">Hoa quả </a>-->
-
-<!--                                  </li>-->
-
-<!--                                  <li>-->
-<!--                                    <a href="https://cool-organic.bizwebvietnam.net/hai-san" title="">Hải sản </a>-->
-
-<!--                                  </li>-->
-
-<!--                                  <li>-->
-<!--                                    <a href="https://cool-organic.bizwebvietnam.net/cac-loai-hat" title="">Các loại hạt </a>-->
-
-<!--                                  </li>-->
-
-<!--                                  <li>-->
-<!--                                    <a href="https://cool-organic.bizwebvietnam.net/thuc-pham-tuoi-song" title="">Thực phẩm tươi sống </a>-->
-
-<!--                                  </li>-->
-
-<!--                                </ul>-->
                               </li>
 
-
-
-
-
                               <li class="nav-item ">
-                                <a class="a-img" href="https://cool-organic.bizwebvietnam.net/tin-tuc">
+                                <a class="a-img">
                                   <span>Tin tức</span>
                                 </a>
                               </li>
 
 
 
-
                               <li class="nav-item ">
-                                <a class="a-img" href="https://cool-organic.bizwebvietnam.net/lien-he">
+                                <a class="a-img">
                                   <span>Liên hệ</span>
                                 </a>
                               </li>
@@ -113,10 +79,19 @@
                   <div class="icon_hotline icon2">
                     <i class='fas fa-user' style='font-size:25px;color:#91ad41'></i>
                   </div>
-                  <ul class="content_hotline login_and_register">
+                  <ul class="content_hotline login_and_register" routerLinkActive="active">
 
-                    <li><a class="register_click" routerLink="/create-user">Đăng ký</a></li>
-                    <li><a class="login_click"  routerLink="/add">Đăng nhập</a></li>
+                    <li *ngIf="authority === 'user'" class="nav-item">
+                      <a class="nav-link" routerLink="user">User Board</a>
+                    </li>
+                    <li *ngIf="authority === 'admin'" class="nav-item">
+                      <a class="nav-link" routerLink="admin">Admin Board</a>
+                    </li>
+
+                    <li><a class="register_click" routerLink="signup">Register</a></li>
+                    <li *ngIf="!authority" class="nav-item">
+                      <a class="login_click"  routerLink="auth/login">Login</a>
+                    </li>
 
                   </ul>
                 </div>

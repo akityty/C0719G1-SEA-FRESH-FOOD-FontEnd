@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
+import {AuthLoginInfo} from "../auth/login-info";
+import {AuthService} from "../auth/auth.service";
+import {TokenStorageService} from "../auth/token-storage.service";
 
 @Component({
   selector: 'app-login-user',
@@ -8,30 +11,47 @@ import {UserService} from '../service/user.service';
   styleUrls: ['./login-user.component.css']
 })
 export class LoginUserComponent implements OnInit {
-  loginForm: FormGroup;
-  message: string;
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+  private loginInfo: AuthLoginInfo;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
-  }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
-    });
-  }
-
-  submit() {
-    if (this.loginForm.valid) {
-      this.userService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(next => {
-        this.message = 'Bạn đã đăng nhập thành công!';
-      }, error => {
-        if (error.valueOf().status === 400) {
-          this.message = 'Sai mật khẩu';
-        } else {
-          this.message = 'Không tìm thây tài khoản';
-        }
-      });
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getAuthorities();
     }
+  }
+  onSubmit() {
+    console.log(this.form);
+
+    this.loginInfo = new AuthLoginInfo(
+      this.form.username,
+      this.form.password);
+
+    this.authService.attemptAuth(this.loginInfo).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUsername(data.username);
+        this.tokenStorage.saveAuthorities(data.authorities);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getAuthorities();
+        this.reloadPage();
+      },
+      error => {
+        console.log(error);
+        this.errorMessage = error.error.message;
+        this.isLoginFailed = true;
+      }
+    );
+  }
+  reloadPage() {
+    window.location.reload();
   }
 }
