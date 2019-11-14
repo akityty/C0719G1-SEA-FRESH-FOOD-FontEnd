@@ -29,3 +29,4 @@ export class AuthService {
     return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
 }
+

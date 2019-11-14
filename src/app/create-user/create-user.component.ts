@@ -20,12 +20,6 @@ export class CreateUserComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  checkPasswords(group: FormGroup) {
-    const pass = group.get('password').value;
-    const confirmPass = group.get('confirmPassword').value;
-    return pass === confirmPass ? null : {notSame: true};
-  }
   onSubmit() {
     console.log(this.form);
 
@@ -40,12 +34,14 @@ export class CreateUserComponent implements OnInit {
         console.log(data);
         this.isSignedUp = true;
         this.isSignUpFailed = false;
+
       },
       error => {
         console.log(error);
         this.errorMessage = error.error.message;
         this.isSignUpFailed = true;
       }
+
     );
   }
 }
