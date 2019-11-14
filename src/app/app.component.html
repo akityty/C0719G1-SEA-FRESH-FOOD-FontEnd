@@ -35,6 +35,10 @@
     <router-outlet></router-outlet>
   </div>
 </div>
-
+<div *ngIf="message">
+  {{message}}
+</div>
+<button (click)="admin()">Admin</button>
+<button (click)="users()">User</button>
 </body>
 </html>
