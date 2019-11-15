@@ -133,3 +133,19 @@
   padding: 0!important;
 
 }
+.user{
+  color: #91ad41;
+  font-family: "Quicksand",sans-serif!important;
+  font-size: 16px;
+}
+.admin{
+  color: #91ad41;
+  font-family: "Quicksand",sans-serif!important;
+  font-size: 16px;
+  padding: 0!important;
+}
+.user_info{
+  display: block;
+  width: 100%;
+  float: left;
+}

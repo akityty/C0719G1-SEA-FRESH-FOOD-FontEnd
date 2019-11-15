@@ -81,14 +81,18 @@
                   </div>
                   <ul class="content_hotline login_and_register" routerLinkActive="active">
 
-                    <li *ngIf="authority === 'user'" class="nav-item">
-                      <a class="nav-link" routerLink="user">User Board</a>
+                    <li *ngIf="authority === 'user'" class="user_info">
+                      <a class="user" routerLink="user">User</a>
                     </li>
-                    <li *ngIf="authority === 'admin'" class="nav-item">
-                      <a class="nav-link" routerLink="admin">Admin Board</a>
+                    <li *ngIf="authority === 'admin'" class="admin_info">
+                      <a class="admin" routerLink="admin">Admin</a>
                     </li>
 
-                    <li><a class="register_click" routerLink="signup">Đăng ký</a></li>
+                    <li *ngIf="authority === 'admin'||authority ==='user'" class="nav-item">
+                      <a class="admin" routerLink="admin" (click)="logout()">Đăng xuất</a>
+                    </li>
+
+                    <li *ngIf="!authority"><a class="register_click" routerLink="signup">Đăng ký</a></li>
                     <li *ngIf="!authority" class="nav-item">
                       <a class="login_click"  routerLink="auth/login">Đăng nhập</a>
                     </li>

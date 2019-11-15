@@ -43,7 +43,7 @@
                      placeholder="Tên đăng nhập"
                      required/>
               <div *ngIf="f.submitted && username.invalid">
-                <div *ngIf="username.errors.required">Username is required</div>
+                <div *ngIf="username.errors.required" class="validate">Username is required</div>
               </div>
             </div>
             <div class="form-group">
@@ -52,8 +52,8 @@
                      placeholder="Email" required
                      email/>
               <div *ngIf="f.submitted && email.invalid">
-                <div *ngIf="email.errors.required">Email is required</div>
-                <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                <div *ngIf="email.errors.required"class="validate">Email is required</div>
+                <div *ngIf="email.errors.email" class="validate">Email must be a valid email address</div>
               </div>
             </div>
             <div class="form-group">
@@ -61,8 +61,8 @@
                      #password="ngModel"
                      placeholder="Mật khẩu" required minlength="6"/>
               <div *ngIf="f.submitted && password.invalid">
-                <div *ngIf="password.errors.required">Password is required</div>
-                <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                <div *ngIf="password.errors.required" class="validate">Password is required</div>
+                <div *ngIf="password.errors.minlength"class="validate">Password must be at least 6 characters</div>
               </div>
             </div>
 
