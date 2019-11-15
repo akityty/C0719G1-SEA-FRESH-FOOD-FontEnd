@@ -20,11 +20,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
   }
-
+  // JwtResponse(accessToken,type,username,authorities)
   attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
     return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
   }
-
+  // SignUpInfo(name,username,email,role,password)
   signUp(info: SignUpInfo): Observable<string> {
     return this.http.post<string>(this.signupUrl, info, httpOptions);
   }

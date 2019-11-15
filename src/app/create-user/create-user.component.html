@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Trang chủ</title>
+  <title></title>
   <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 
@@ -19,10 +19,8 @@
 <div class="bg_base_lr">
   <div class="container">
     <div class="row">
-
-
-      <div *ngIf="isSignedUp; else signupForm">
-        Your registration is successful. Please login!
+            <div *ngIf="isSignedUp; else signupForm">
+    Bạn đã đăng ký thành công. Vui lòng đăng nhập!
       </div>
 
       <ng-template #signupForm>
@@ -46,6 +44,7 @@
                 <div *ngIf="username.errors.required" class="validate">Username is required</div>
               </div>
             </div>
+
             <div class="form-group">
 
               <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel"
