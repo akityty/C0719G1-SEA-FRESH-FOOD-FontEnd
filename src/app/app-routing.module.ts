@@ -1,26 +1,22 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {CreateUserComponent} from './FRESH-FOOD/user/create-user/create-user.component';
 import {LoginUserComponent} from './FRESH-FOOD/user/login-user/login-user.component';
-import {HomeComponent} from './home/home.component';
-import {UserComponent} from './user/user.component';
-import {AdminComponent} from './admin/admin.component';
+import {AppComponent} from './app.component';
+import {DetailsUserComponent} from './FRESH-FOOD/user/details-user/details-user.component';
+import {UpdateUserComponent} from './FRESH-FOOD/user/update-user/update-user.component';
+import {UpdatePasswordComponent} from './FRESH-FOOD/user/update-password/update-password.component';
 
 
 
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: AppComponent
   },
   {
-    path: 'user',
-    component: UserComponent
-  },
-  {
-    path: 'admin',
-    component: AdminComponent
+    path: 'home/auth/login',
+    component: LoginUserComponent
   },
   {
     path: 'auth/login',
@@ -35,10 +31,17 @@ const routes: Routes = [
     component: CreateUserComponent
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  }
+    path: 'userDetails',
+    component: DetailsUserComponent
+  },
+  {
+    path: 'userUpdate',
+    component: UpdateUserComponent
+  },
+  {
+    path: 'updatePassword',
+    component: UpdatePasswordComponent
+  },
 ];
 
 @NgModule({

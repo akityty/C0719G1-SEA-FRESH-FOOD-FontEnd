@@ -5,7 +5,6 @@
   <title>Trang chủ</title>
   <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 </head>
-
 <body>
 <header class="header">
   <div class="mid-header wid_100 f-left">
@@ -32,7 +31,7 @@
                             <ul class="item_big">
 
                               <li class="nav-item active ">
-                                <a class="a-img" routerLink="home">
+                                <a class="a-img" href="/">
                                   <span>Trang chủ</span>
                                 </a>
                               </li>
@@ -53,7 +52,6 @@
                                   <span>Tin tức</span>
                                 </a>
                               </li>
-
 
 
                               <li class="nav-item ">
@@ -79,20 +77,17 @@
                   <div class="icon_hotline icon2">
                     <i class='fas fa-user' style='font-size:25px;color:#91ad41'></i>
                   </div>
-                  <ul class="content_hotline login_and_register" routerLinkActive="active">
-
-                    <li *ngIf="authority === 'user'" class="nav-item">
-                      <a class="nav-link" routerLink="user">User Board</a>
-                    </li>
-                    <li *ngIf="authority === 'admin'" class="nav-item">
-                      <a class="nav-link" routerLink="admin">Admin Board</a>
-                    </li>
-
+                  <ul class="content_hotline login_and_register" routerLinkActive="active" *ngIf="userService.userOnline.userName==''">
                     <li><a class="register_click" routerLink="registered">Đăng ký</a></li>
-                    <li *ngIf="!authority" class="nav-item">
-                      <a class="login_click"  routerLink="auth/login">Đăng nhập</a>
+                    <li class="nav-item">
+                      <a class="login_click" routerLink="auth/login">Đăng nhập</a>
                     </li>
-
+                  </ul>
+                  <ul class="content_hotline login_and_register" routerLinkActive="active" *ngIf="userService.userOnline.userName!=''">
+                    <li><a class="register_click" routerLink="userDetails">{{userService.userOnline.userName}}</a></li>
+                    <li class="nav-item">
+                      <a class="login_click" (click)="logout()">Đăng xuất</a>
+                    </li>
                   </ul>
                 </div>
 
@@ -103,7 +98,17 @@
         </div>
 
         <div>
-          <router-outlet></router-outlet>
+          <div *ngIf="userService.userOnline.userName!=''" class="sidebar">
+            <div><a routerLink="userDetails">Thông tin cá nhân</a></div>
+            <div><a routerLink="userUpdate">Sửa thông tin</a></div>
+            <div><a routerLink="updatePassword">Đổi mật khẩu</a></div>
+          </div>
+          <div *ngIf="userService.userOnline.userName==''" class="sidebar">
+            <div><a href="">Rau củ</a></div>
+            <div> <a href="">Hải Sản</a></div>
+            <div> <a href="">Thịt các loại</a></div>
+          </div>
+          <div class="sidebar"><router-outlet></router-outlet></div>
         </div>
       </div>
     </div>

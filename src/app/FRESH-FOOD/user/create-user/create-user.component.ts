@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../interface/user';
+import {Login} from '../../interface/login';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-create-user',
@@ -12,8 +14,10 @@ export class CreateUserComponent implements OnInit {
   user: User;
   createUserForm: FormGroup;
   check = '';
+  login: Login;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+
+  constructor(private fb: FormBuilder, private userService: UserService, private cookieService: CookieService) {
   }
 
   checkPasswords(group: FormGroup) {
@@ -29,9 +33,7 @@ export class CreateUserComponent implements OnInit {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
         confirmPassword: ['', Validators.required],
-      },
-      {validator: this.checkPasswords}
-    );
+      }, {validator: this.checkPasswords});
   }
 
   onSubmit() {
@@ -39,6 +41,9 @@ export class CreateUserComponent implements OnInit {
       this.TransferFormDataToUser();
       this.userService.createUser(this.user).subscribe(
         next => {
+          this.login = {username: this.createUserForm.get('username').value, password: this.createUserForm.get('password').value};
+          this.userService.autoLogin(this.login);
+          window.sessionStorage.setItem('password', this.createUserForm.get('password').value);
           this.check = 'true';
         },
         error => {
@@ -54,7 +59,7 @@ export class CreateUserComponent implements OnInit {
       username: this.createUserForm.get('username').value,
       email: this.createUserForm.get('email').value,
       password: this.createUserForm.get('password').value,
-      role:  ['user']
+      role: ['user']
     };
   }
 }

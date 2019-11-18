@@ -5,7 +5,6 @@
   <title>Trang chủ</title>
   <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 </head>
-
 <body>
 <div class="breadcrumb_background margin-bottom-40">
   <div class="title_full">
@@ -14,17 +13,12 @@
     </div>
   </div>
 </div>
-
-
 <div class="bg_base_lr">
   <div class="container">
     <div class="row">
-
       <div class="col-sm-3" style="max-width:350px;"></div>
       <div class="col-sm-6" style="">
-
         <form name="form" [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
-
           <div class="form-group">
               Họ và Tên
               <input type="text" class="form-control" formControlName="name" placeholder="Họ và tên"/>
@@ -33,7 +27,6 @@
               Mật khẩu nhất 6 ký tự và nhiều nhất 20 ký tự
             </div>
           </div>
-
           <div class="form-group">
               Tên Đăng Nhập
               <input type="text" class="form-control" formControlName="username" placeholder="Tên Đăng Nhập"/>
@@ -42,18 +35,14 @@
               Mật khẩu nhất 6 ký tự và nhiều nhất 20 ký tự
             </div>
           </div>
-
-
           <div class="form-group">
             Email
-
             <input type="text" class="form-control" formControlName="email" placeholder="Email"/>
             <div class="alert alert-danger" role="alert"
                  *ngIf="createUserForm.get('email').invalid && createUserForm.get('email').touched">
               Sai định dạng Email
             </div>
           </div>
-
           <div class="form-group">
               Mật khẩu
               <input type="password" class="form-control" formControlName="password" placeholder="Password"/>
@@ -78,13 +67,12 @@
           <div class="alert alert-danger" role="alert" *ngIf="check==='false'">
             điền thông tin chưa đúng hoặc email đã tồn tại
           </div>
-
           <div class="form-group">
+            <div>
+            </div>
             <button class="btn btn-primary" type="submit">Đăng ký</button>
           </div>
         </form>
-
-
       </div>
       <div class="col-sm-3" style="max-width:350px;"></div>
     </div>

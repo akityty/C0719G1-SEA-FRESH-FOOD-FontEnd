@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {AuthLoginInfo} from '../../../auth/login-info';
-import {AuthService} from '../../../auth/auth.service';
-import {TokenStorageService} from '../../../auth/token-storage.service';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../../service/user.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login-user',
@@ -9,47 +9,24 @@ import {TokenStorageService} from '../../../auth/token-storage.service';
   styleUrls: ['./login-user.component.css']
 })
 export class LoginUserComponent implements OnInit {
-  form: any = {};
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';
-  roles: string[] = [];
-  private loginInfo: AuthLoginInfo;
+  loginForm: FormGroup;
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+
+  constructor(private fb: FormBuilder, private userService: UserService, private cookieService: CookieService) {
+  }
 
   ngOnInit() {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getAuthorities();
-    }
-  }
-  onSubmit() {
-    console.log(this.form);
-    this.loginInfo = new AuthLoginInfo(
-      this.form.username,
-      this.form.password);
-
-    this.authService.attemptAuth(this.loginInfo).subscribe(
-      data => {
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUsername(data.username);
-        this.tokenStorage.saveAuthorities(data.authorities);
-        console.log(data.authorities);
-
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getAuthorities();
-        // this.reloadPage();
-      },
-      error => {
-        console.log(error);
-        this.errorMessage = error.error.message;
-        this.isLoginFailed = true;
+    this.loginForm = this.fb.group({
+        username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
+        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
       }
     );
   }
-  reloadPage() {
-    window.location.reload();
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      this.userService.autoLogin(this.loginForm.value);
+      window.sessionStorage.setItem('password', this.loginForm.get('password').value);
+    }
   }
 }
