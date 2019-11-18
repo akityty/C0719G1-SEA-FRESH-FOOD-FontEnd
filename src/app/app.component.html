@@ -98,15 +98,10 @@
         </div>
 
         <div>
-          <div *ngIf="userService.userOnline.userName!=''" class="sidebar">
+          <div *ngIf="userService.userOnline.userName!=''" >
             <div><a routerLink="userDetails">Thông tin cá nhân</a></div>
             <div><a routerLink="userUpdate">Sửa thông tin</a></div>
             <div><a routerLink="updatePassword">Đổi mật khẩu</a></div>
-          </div>
-          <div *ngIf="userService.userOnline.userName==''" class="sidebar">
-            <div><a href="">Rau củ</a></div>
-            <div> <a href="">Hải Sản</a></div>
-            <div> <a href="">Thịt các loại</a></div>
           </div>
           <div class="sidebar"><router-outlet></router-outlet></div>
         </div>

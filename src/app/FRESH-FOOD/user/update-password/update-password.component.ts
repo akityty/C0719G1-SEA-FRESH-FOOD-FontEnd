@@ -38,22 +38,21 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.updatePasswordForm.valid && this.updatePasswordForm.get('password').value !== window.sessionStorage.getItem('password')) {
+    if (this.updatePasswordForm.valid && this.updatePasswordForm.get('password').value === window.sessionStorage.getItem('password')) {
       this.TransferFormDataToUser();
-      console.log(this.user);
-      // this.userService.updatePasswordUser(this.user).subscribe(
-      //   next => {
-      //     this.userService.userOnline.userName = '';
-      //     this.userService.userOnline.jwtToken = '';
-      //     this.userService.userOnline.password = '';
-      //     this.cookieService.delete('username');
-      //     this.cookieService.delete('jwtToken');
-      //     window.sessionStorage.removeItem('password');
-      //     this.check = 'true';
-      //   },
-      //   error => {
-      //     this.check = 'false';
-      //   });
+      this.userService.updatePasswordUser(this.user).subscribe(
+        next => {
+          this.userService.userOnline.userName = '';
+          this.userService.userOnline.jwtToken = '';
+          this.userService.userOnline.password = '';
+          this.cookieService.delete('username');
+          this.cookieService.delete('jwtToken');
+          window.sessionStorage.removeItem('password');
+          this.check = 'true';
+        },
+        error => {
+          this.check = 'false';
+        });
     } else {
       this.message = false;
     }
