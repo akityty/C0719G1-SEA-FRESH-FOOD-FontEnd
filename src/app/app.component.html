@@ -74,12 +74,12 @@
                   </div>
                   <ul class="content_hotline login_and_register" routerLinkActive="active">
 
-                    <li *ngIf="authority === 'user'" class="user_info">
-                      <a class="user" routerLink="user">User</a>
+                    <li class="user_info">
+                      <a class="user" routerLink="user">{{username}}</a>
                     </li>
-                    <li *ngIf="authority === 'admin'" class="admin_info">
-                      <a class="admin" routerLink="admin">Admin</a>
-                    </li>
+<!--                    <li *ngIf="authority === 'admin'" class="admin_info">-->
+<!--                      <a class="admin" routerLink="admin">Admin</a>-->
+<!--                    </li>-->
 
                     <li *ngIf="authority === 'admin'||authority ==='user'" class="nav-item">
                       <a class="admin" routerLink="admin" (click)="logout()">Đăng xuất</a>

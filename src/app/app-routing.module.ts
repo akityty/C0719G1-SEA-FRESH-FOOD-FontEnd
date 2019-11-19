@@ -6,6 +6,8 @@ import {LoginUserComponent} from './login-user/login-user.component';
 import {AdminComponent} from "./admin/admin.component";
 import {UserComponent} from "./user/user.component";
 import {HomeComponent} from "./home/home.component";
+import {EditprofileComponent} from "./user/editprofile/editprofile.component";
+import {ChangepasswordComponent} from "./user/changepassword/changepassword.component";
 
 
 const routes: Routes = [
@@ -15,7 +17,16 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    component: UserComponent
+    component: UserComponent, children :[
+      {
+        path: 'editprofile',
+        component: EditprofileComponent
+      },
+      {
+        path: 'changepassword',
+        component: ChangepasswordComponent
+      }
+    ]
   },
   {
     path: 'admin',

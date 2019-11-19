@@ -14,6 +14,10 @@ import { HomeComponent } from './home/home.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 
+import {CookieService} from 'ngx-cookie-service';
+import { EditprofileComponent } from './user/editprofile/editprofile.component';
+import { ChangepasswordComponent } from './user/changepassword/changepassword.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,8 +25,9 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     LoginUserComponent,
     AdminComponent,
     UserComponent,
-    HomeComponent
-
+    HomeComponent,
+    EditprofileComponent,
+    ChangepasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +35,10 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

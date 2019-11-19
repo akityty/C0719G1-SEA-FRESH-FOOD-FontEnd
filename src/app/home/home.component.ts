@@ -10,6 +10,10 @@ export class HomeComponent implements OnInit {
   info: any;
 
   constructor(private token: TokenStorageService) { }
+  username: string;
+  email: string;
+  role: string[];
+  password: string;
 
   ngOnInit() {
     this.info = {

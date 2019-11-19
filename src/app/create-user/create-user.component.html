@@ -19,8 +19,8 @@
 <div class="bg_base_lr">
   <div class="container">
     <div class="row">
-            <div *ngIf="isSignedUp; else signupForm">
-    Bạn đã đăng ký thành công. Vui lòng đăng nhập!
+      <div *ngIf="isSignedUp; else signupForm">
+        Bạn đã đăng ký thành công. Vui lòng đăng nhập!
       </div>
 
       <ng-template #signupForm>
@@ -55,6 +55,8 @@
                 <div *ngIf="email.errors.email" class="validate">Email must be a valid email address</div>
               </div>
             </div>
+
+
             <div class="form-group">
               <input type="password" class="form-control" name="password" [(ngModel)]="form.password"
                      #password="ngModel"
@@ -64,6 +66,9 @@
                 <div *ngIf="password.errors.minlength"class="validate">Password must be at least 6 characters</div>
               </div>
             </div>
+
+
+
 
             <div class="form-group">
               <button class="btn btn-primary">Đăng ký</button>
@@ -80,3 +85,4 @@
 </div>
 </body>
 </html>
+
