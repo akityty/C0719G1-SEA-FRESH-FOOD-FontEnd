@@ -5,6 +5,7 @@ import {Product} from '../../interface/product/product';
 import {HttpClient} from '@angular/common/http';
 import {AngularFireDatabase} from '@angular/fire/database';
 import * as firebase from 'firebase';
+import {Picture} from '../../interface/product/picture';
 
 @Component({
   selector: 'app-create-product',
@@ -15,8 +16,8 @@ export class CreateProductComponent implements OnInit {
   product: Product;
   createProductForm: FormGroup;
   check = '';
-  uploadTask: firebase.storage.UploadTask;
-  basePath = '/uploads';
+  picture: Picture;
+  arrayPicture = [];
 
   // tslint:disable-next-line:max-line-length
   constructor(private http: HttpClient, private fb: FormBuilder, private productService: ProductServiceService, private db: AngularFireDatabase) {
@@ -32,23 +33,13 @@ export class CreateProductComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-  }
 
   uploadFile(event) {
     const file = event.target.files;
-    console.log(file);
     const metadata = {
       contentType: 'image/jpeg',
     };
-    // const storageRef = firebase.storage().ref();
-    // console.log(file[0]);
-    // this.uploadTask = storageRef.child('images/' + file.name).put(file[0]);
-    // this.db.list(`${this.basePath}/`).push(file);
-    // console.log(this.uploadTask.snapshot.downloadURL);
-    const storageRef = firebase.storage().ref();
-    const uploadTask = storageRef.child(`${this.basePath}/${file.name}`).put(file[0]);
-
+    const uploadTask = firebase.storage().ref('img/' + Date.now()).put(file[0], metadata);
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot) => {
         // in progress
@@ -58,25 +49,36 @@ export class CreateProductComponent implements OnInit {
         console.log(error);
       },
       () => {
-
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-          console.log('File available at', downloadURL);
+          this.picture = {name: downloadURL};
+          this.arrayPicture.push(this.picture);
         });
       }
     );
   }
 
-  TransferFormDataToUser() {
+  transferFormDataToUser() {
     this.product = {
       name: this.createProductForm.get('name').value,
       category: {id: 1, name: 'thit'},
       amount: this.createProductForm.get('amount').value,
-      picture: [],
+      picture: this.arrayPicture,
       description: this.createProductForm.get('description').value,
       price: this.createProductForm.get('price').value,
       origin: this.createProductForm.get('origin').value,
       provider: {id: 1, name: 'vinmart'},
       status: true,
     };
+  }
+
+  onSubmit() {
+    this.transferFormDataToUser();
+    console.log(this.product);
+    this.productService.createProduct(this.product).subscribe(next => {
+        this.check = 'true';
+      },
+      error => {
+        this.check = 'false';
+      });
   }
 }
