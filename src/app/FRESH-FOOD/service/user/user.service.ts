@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {User} from '../interface/user';
-import {UserOnline} from '../interface/user-online';
+import {User} from '../../interface/user/user';
+import {UserOnline} from '../../interface/user/user-online';
 // @ts-ignore
 import {UserLogin} from '../interface/userLogin';
-import {Login} from '../interface/login';
+import {Login} from '../../interface/user/login';
 import {CookieService} from 'ngx-cookie-service';
 
 

@@ -11,8 +11,12 @@ import {CookieService} from 'ngx-cookie-service';
 import { DetailsUserComponent } from './FRESH-FOOD/user/details-user/details-user.component';
 import { UpdateUserComponent } from './FRESH-FOOD/user/update-user/update-user.component';
 import { UpdatePasswordComponent } from './FRESH-FOOD/user/update-password/update-password.component';
-
-
+import { HomeUserComponent } from './FRESH-FOOD/user/home-user/home-user.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import { CreateProductComponent } from './FRESH-FOOD/product/create-product/create-product.component';
+import { ListProductComponent } from './FRESH-FOOD/product/list-product/list-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +25,9 @@ import { UpdatePasswordComponent } from './FRESH-FOOD/user/update-password/updat
     DetailsUserComponent,
     UpdateUserComponent,
     UpdatePasswordComponent,
+    HomeUserComponent,
+    CreateProductComponent,
+    ListProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +36,8 @@ import { UpdatePasswordComponent } from './FRESH-FOOD/user/update-password/updat
     HttpClientModule,
     RouterModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -84,7 +84,7 @@
                     </li>
                   </ul>
                   <ul class="content_hotline login_and_register" routerLinkActive="active" *ngIf="userService.userOnline.userName!=''">
-                    <li><a class="register_click" routerLink="userDetails">{{userService.userOnline.userName}}</a></li>
+                    <li><a class="register_click" routerLink="homeUser">{{userService.userOnline.userName}}</a></li>
                     <li class="nav-item">
                       <a class="login_click" (click)="logout()">Đăng xuất</a>
                     </li>
@@ -98,13 +98,10 @@
         </div>
 
         <div>
-          <div *ngIf="userService.userOnline.userName!=''" >
-            <div><a routerLink="userDetails">Thông tin cá nhân</a></div>
-            <div><a routerLink="userUpdate">Sửa thông tin</a></div>
-            <div><a routerLink="updatePassword">Đổi mật khẩu</a></div>
-          </div>
-          <div class="sidebar"><router-outlet></router-outlet></div>
+          <a routerLink="createProduct">Thêm mới sản phẩm</a>
+          <div><router-outlet></router-outlet></div>
         </div>
+
       </div>
     </div>
   </div>
