@@ -3,7 +3,27 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+/*  firebase: {
+    apiKey: 'AIzaSyC6k06AUQeUPapr1i29N9w_4b_ST5l6oC8',
+    authDomain: 'fresh-food-1558d.firebaseapp.com',
+    databaseURL: 'https://fresh-food-1558d.firebaseio.com',
+    projectId: 'fresh-food-1558d',
+    storageBucket: 'fresh-food-1558d.appspot.com',
+    messagingSenderId: '1066164353694',
+    appId: '1:1066164353694:web:e0a235258e8876914ad98f',
+    measurementId: 'G-K9LF5258C0'
+  }*/
+   firebase: {
+    apiKey: 'AIzaSyCjN4kS_YBxrf7-auTDZ0kmC-xZC2LZDhA',
+    authDomain: 'fresh-food-fdaeb.firebaseapp.com',
+    databaseURL: 'https://fresh-food-fdaeb.firebaseio.com',
+    projectId: 'fresh-food-fdaeb',
+    storageBucket: 'fresh-food-fdaeb.appspot.com',
+    messagingSenderId: '335387484610',
+    appId: '1:335387484610:web:1ef53c94c76f65a1bab65b',
+    measurementId: 'G-H6TV684Y27'
+  }
 };
 
 /*

@@ -1,35 +1,32 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from './service/user.service';
-import {TokenStorageService} from "./auth/token-storage.service";
+import {UserService} from './FRESH-FOOD/service/user/user.service';
+import {CookieService} from 'ngx-cookie-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  private roles: string[];
-  private authority: string;
 
-  constructor(private tokenStorage: TokenStorageService) { }
-  ngOnInit() {
-    if (this.tokenStorage.getToken()) {
-      this.roles = this.tokenStorage.getAuthorities();
-      this.roles.every(role => {
-        if (role === 'ROLE_ADMIN') {
-          this.authority = 'admin';
-          return false;
-        } else if (role === 'ROLE_USER') {
-          this.authority = 'user';
-          return true;
-        }
-      });
-    }
+export class AppComponent implements OnInit {
+
+  constructor(private userService: UserService, private cookieService: CookieService, private  router: Router) {
   }
 
+  ngOnInit() {
+    this.router.navigate(['listProduct']);
+    this.userService.userOnline.userName = this.cookieService.get('username');
+    this.userService.userOnline.jwtToken = this.cookieService.get('jwtToken');
+    this.userService.userOnline.password = window.sessionStorage.getItem('password');
+  }
   logout() {
-    this.tokenStorage.signOut();
+    this.cookieService.delete('username');
+    this.cookieService.delete('jwtToken');
+    window.sessionStorage.removeItem('password');
+    this.userService.userOnline.userName = '';
+    this.userService.userOnline.jwtToken = '';
+    this.userService.userOnline.password = '';
     window.location.reload();
   }
-
 }
