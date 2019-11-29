@@ -7,10 +7,11 @@ import {UserService} from '../../service/user/user.service';
   styleUrls: ['./home-user.component.css']
 })
 export class HomeUserComponent implements OnInit {
-
+checkRole: string;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+  this.checkRole = window.sessionStorage.getItem('role');
   }
 
 }

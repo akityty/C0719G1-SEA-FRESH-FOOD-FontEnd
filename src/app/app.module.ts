@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { CreateProductComponent } from './FRESH-FOOD/product/create-product/create-product.component';
 import { ListProductComponent } from './FRESH-FOOD/product/list-product/list-product.component';
 import { ProductManagementComponent } from './FRESH-FOOD/product/product-management/product-management.component';
+import { ManagementListProductComponent } from './FRESH-FOOD/product/management-list-product/management-list-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { ProductManagementComponent } from './FRESH-FOOD/product/product-managem
     CreateProductComponent,
     ListProductComponent,
     ProductManagementComponent,
+    ManagementListProductComponent,
   ],
   imports: [
     BrowserModule,

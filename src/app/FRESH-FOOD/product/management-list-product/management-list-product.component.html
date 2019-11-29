@@ -1,0 +1,14 @@
+<table class="table table-borderless">
+  <tr *ngFor="let product of products">
+    <a>
+    <td><img [src]="product.picture[0].name" width="100px" height="100px"></td>
+    <td>{{product.name}}</td>
+    <td class="text-danger">{{product.price}}/Kg</td>
+    </a>
+    <th><a>sửa</a></th>
+    <th><a>Xóa</a></th>
+  </tr>
+</table>
+
+
+

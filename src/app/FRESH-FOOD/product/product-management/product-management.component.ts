@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductServiceService} from '../../service/product/product-service.service';
 import {Product} from '../../interface/product/product';
+import {Router} from '@angular/router';
+import {UserService} from '../../service/user/user.service';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-product-management',
@@ -8,19 +11,12 @@ import {Product} from '../../interface/product/product';
   styleUrls: ['./product-management.component.css']
 })
 export class ProductManagementComponent implements OnInit {
-  products: Product[];
-
-  constructor(private productService: ProductServiceService) {
+  constructor(private  router: Router, private userService: UserService, private cookieService: CookieService) {
   }
-
   ngOnInit() {
-    this.productService.listProduct().subscribe(next => {
-        this.products = next;
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.userService.userOnline.userName = this.cookieService.get('username');
+    this.userService.userOnline.jwtToken = this.cookieService.get('jwtToken');
+    this.router.navigate(['productManagement/listProduct']);
   }
 
 }

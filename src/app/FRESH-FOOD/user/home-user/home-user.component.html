@@ -4,6 +4,7 @@
     <div><a routerLink="userDetails">Thông tin cá nhân</a></div>
     <div><a routerLink="userUpdate">Sửa thông tin</a></div>
     <div><a routerLink="updatePassword">Đổi mật khẩu</a></div>
+    <div *ngIf="checkRole === 'Admin'"><a routerLink="updatePassword">Quản lý Sản phẩm</a></div>
   </div>
   <div class="sidebar">
     <router-outlet></router-outlet>
