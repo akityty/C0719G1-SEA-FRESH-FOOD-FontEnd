@@ -1,24 +1,24 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ProductServiceService} from '../../service/product/product-service.service';
 import {Product} from '../../interface/product/product';
-import {HttpClient} from '@angular/common/http';
-import {AngularFireDatabase} from '@angular/fire/database';
-import * as firebase from 'firebase';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Picture} from '../../interface/product/picture';
 import {Provider} from '../../interface/product/provider';
 import {Category} from '../../interface/product/category';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {ProductServiceService} from '../../service/product/product-service.service';
+import {AngularFireDatabase} from '@angular/fire/database';
+import * as firebase from 'firebase';
 import {Subscription} from 'rxjs';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-create-product',
-  templateUrl: './create-product.component.html',
-  styleUrls: ['./create-product.component.css']
+  selector: 'app-update-product',
+  templateUrl: './update-product.component.html',
+  styleUrls: ['./update-product.component.css']
 })
-export class CreateProductComponent implements OnInit {
+export class UpdateProductComponent implements OnInit {
   product: Product;
-  createProductForm: FormGroup;
+  updateProductForm: FormGroup;
   check = '';
   picture: Picture;
   arrayPicture = [];
@@ -26,16 +26,27 @@ export class CreateProductComponent implements OnInit {
   listCategory: Category[];
   provider: Provider;
   category: Category;
+  sub: Subscription;
 
 
   // tslint:disable-next-line:max-line-length
-  constructor(private http: HttpClient, private fb: FormBuilder,
+  constructor(private http: HttpClient,
+              private fb: FormBuilder,
               private productService: ProductServiceService,
+              private activatedRoute: ActivatedRoute,
               private db: AngularFireDatabase,
               private  router: Router) {
   }
 
   ngOnInit() {
+    this.sub = this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      const id = paramMap.get('id');
+      this.productService.detailProduct(id).subscribe(next => {
+        this.product = next;
+      }, error => {
+        console.log(error);
+      });
+    });
     this.productService.listCategory().subscribe(next => {
       this.listCategory = next;
     }, error => {
@@ -46,7 +57,7 @@ export class CreateProductComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-    this.createProductForm = this.fb.group({
+    this.updateProductForm = this.fb.group({
       name: ['', [Validators.required]],
       amount: ['', [Validators.required, Validators.min(1)]],
       description: ['', [Validators.required]],
@@ -56,7 +67,6 @@ export class CreateProductComponent implements OnInit {
       provider: ['', [Validators.required]],
     });
   }
-
 
   uploadFile(event) {
     const file = event.target.files;
@@ -74,7 +84,7 @@ export class CreateProductComponent implements OnInit {
       },
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-          this.picture = {name: downloadURL};
+          this.picture = {id: this.product.picture[0].id++, name: downloadURL};
           this.arrayPicture.push(this.picture);
         });
       }
@@ -83,20 +93,21 @@ export class CreateProductComponent implements OnInit {
 
   transferFormDataToProduct() {
     this.product = {
-      name: this.createProductForm.get('name').value,
-      category: this.category = {id: this.createProductForm.get('category').value},
-      amount: this.createProductForm.get('amount').value,
+      id: this.product.id,
+      name: this.updateProductForm.get('name').value,
+      category: this.category = {id: this.updateProductForm.get('category').value},
+      amount: this.updateProductForm.get('amount').value,
       picture: this.arrayPicture,
-      description: this.createProductForm.get('description').value,
-      price: this.createProductForm.get('price').value,
-      origin: this.createProductForm.get('origin').value,
-      provider: this.provider = {id: this.createProductForm.get('provider').value},
+      description: this.updateProductForm.get('description').value,
+      price: this.updateProductForm.get('price').value,
+      origin: this.updateProductForm.get('origin').value,
+      provider: this.provider = {id: this.updateProductForm.get('provider').value},
       status: true,
     };
   }
 
   onSubmit() {
-    if (this.createProductForm.valid && this.arrayPicture.length === 3) {
+    if (this.updateProductForm.valid && this.arrayPicture.length === 3) {
       this.transferFormDataToProduct();
       this.productService.createProduct(this.product).subscribe(next => {
           this.router.navigate(['productManagement/listProduct']);

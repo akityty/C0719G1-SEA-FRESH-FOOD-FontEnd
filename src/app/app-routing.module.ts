@@ -11,6 +11,9 @@ import {CreateProductComponent} from './FRESH-FOOD/product/create-product/create
 import {ListProductComponent} from './FRESH-FOOD/product/list-product/list-product.component';
 import {ProductManagementComponent} from './FRESH-FOOD/product/product-management/product-management.component';
 import {ManagementListProductComponent} from './FRESH-FOOD/product/management-list-product/management-list-product.component';
+import {UpdateProductComponent} from './FRESH-FOOD/product/update-product/update-product.component';
+import {DeleteProductComponent} from './FRESH-FOOD/product/delete-product/delete-product.component';
+import {DetailProductComponent} from './FRESH-FOOD/product/detail-product/detail-product.component';
 
 
 const routes: Routes = [
@@ -50,7 +53,11 @@ const routes: Routes = [
   },
   {
     path: 'listProduct',
-    component: ListProductComponent
+    component: ListProductComponent,
+  },
+  {
+    path: 'listProduct/detailProduct/:id',
+    component: DetailProductComponent
   },
   {
     path: 'productManagement',
@@ -64,8 +71,16 @@ const routes: Routes = [
         path: 'listProduct',
         component: ManagementListProductComponent
       },
+      {
+        path: 'listProduct/updateProduct/:id',
+        component: UpdateProductComponent
+      },
+      {
+        path: 'listProduct/deleteProduct/:id',
+        component: DeleteProductComponent
+      },
     ]
-  }
+  },
 ];
 
 @NgModule({

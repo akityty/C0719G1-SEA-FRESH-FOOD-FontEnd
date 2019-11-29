@@ -11,35 +11,51 @@ import {Provider} from '../../interface/product/provider';
   providedIn: 'root'
 })
 export class ProductServiceService {
-  private API_URL = 'http://localhost:8080/product';
+  private API_URL_PRODUCT = 'http://localhost:8080/product';
+  private API_URL_CATEGORY = 'http://localhost:8080/category';
+  private API_URL_PROVIDER = 'http://localhost:8080/provider';
 
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
 
   listProduct(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.API_URL}/home`);
+    return this.http.get<Product[]>(`${this.API_URL_PRODUCT}/home`);
   }
 
   listCategory(): Observable<Category[]> {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
     });
-    return this.http.get<Category[]>(`${this.API_URL}/category`, {headers});
+    return this.http.get<Category[]>(`${this.API_URL_CATEGORY}/list`, {headers});
   }
 
   listProvider(): Observable<Provider[]> {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
     });
-    return this.http.get<Provider[]>(`${this.API_URL}/provider`, {headers});
+    return this.http.get<Provider[]>(`${this.API_URL_PROVIDER}/list`, {headers});
   }
 
   createProduct(product: Product): Observable<Product> {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
     });
-    return this.http.post<Product>(`${this.API_URL}/add`, product, {headers});
+    return this.http.post<Product>(`${this.API_URL_PRODUCT}/add`, product, {headers});
+  }
+
+  detailProduct(id: string): Observable<Product> {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
+    });
+    return this.http.get<Product>(`${this.API_URL_PRODUCT}/detail/${id}`, {headers});
+  }
+
+  deleteProduct(id: number): Observable<void> {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
+    });
+    return this.http.delete<void>(`${this.API_URL_PRODUCT}/delete/${id}`, {headers});
   }
 }
 

@@ -1,15 +1,15 @@
-
 <div>
-  <div class="sidebar">
-    <div><a routerLink="userDetails">Thông tin cá nhân</a></div>
-    <div><a routerLink="userUpdate">Sửa thông tin</a></div>
-    <div><a routerLink="updatePassword">Đổi mật khẩu</a></div>
-    <div *ngIf="checkRole === 'Admin'"><a routerLink="updatePassword">Quản lý Sản phẩm</a></div>
+  <div class="sidebar" *ngIf="checkRole !== 'Admin'">
+    <div><a routerLink="userDetails" class="sidebar">Thông tin cá nhân</a></div>
+    <div><a routerLink="userUpdate" class="sidebar">Sửa thông tin</a></div>
+    <div><a routerLink="updatePassword" class="sidebar">Đổi mật khẩu</a></div>
   </div>
-  <div class="sidebar">
-    <router-outlet></router-outlet>
+  <div *ngIf="checkRole === 'Admin'">
+    <button (click)="listProduct()" class="btn btn-primary">Quản lý Sản phẩm</button>
+    <div class="sidebar">
+    </div>
   </div>
-</div>
+  <router-outlet></router-outlet>
 
 
 
