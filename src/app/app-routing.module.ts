@@ -9,6 +9,7 @@ import {UpdatePasswordComponent} from './FRESH-FOOD/user/update-password/update-
 import {HomeUserComponent} from './FRESH-FOOD/user/home-user/home-user.component';
 import {CreateProductComponent} from './FRESH-FOOD/product/create-product/create-product.component';
 import {ListProductComponent} from './FRESH-FOOD/product/list-product/list-product.component';
+import {ProductManagementComponent} from './FRESH-FOOD/product/product-management/product-management.component';
 
 
 const routes: Routes = [
@@ -47,12 +48,18 @@ const routes: Routes = [
     }]
   },
   {
-    path: 'createProduct',
-    component: CreateProductComponent
-  },
-  {
     path: 'listProduct',
     component: ListProductComponent
+  },
+  {
+    path: 'productManagement',
+    component: ProductManagementComponent,
+    children: [
+      {
+        path: 'createProduct',
+        component: CreateProductComponent
+      },
+    ]
   }
 ];
 

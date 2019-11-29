@@ -17,6 +17,7 @@ import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { CreateProductComponent } from './FRESH-FOOD/product/create-product/create-product.component';
 import { ListProductComponent } from './FRESH-FOOD/product/list-product/list-product.component';
+import { ProductManagementComponent } from './FRESH-FOOD/product/product-management/product-management.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { ListProductComponent } from './FRESH-FOOD/product/list-product/list-pro
     HomeUserComponent,
     CreateProductComponent,
     ListProductComponent,
+    ProductManagementComponent,
   ],
   imports: [
     BrowserModule,

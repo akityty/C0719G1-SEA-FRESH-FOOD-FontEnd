@@ -36,11 +36,31 @@
 
   <div class="form-group">
     Nguồn gốc
-    <input type="password" class="form-control" formControlName="origin" placeholder="Nguồn gốc">
+    <input type="text" class="form-control" formControlName="origin" placeholder="Nguồn gốc">
   </div>
   <div class="alert alert-danger" role="alert"
        *ngIf="createProductForm.get('origin').invalid && createProductForm.get('origin').touched">
     Chưa điền thông tin
+  </div>
+  <div class="form-group">
+    phân loại sản phẩm :
+   <select formControlName="category">
+     <option *ngFor="let category of listCategory" [value]="category.id">{{category.name}}</option>
+   </select>
+    <div class="alert alert-danger" role="alert"
+         *ngIf="createProductForm.get('category').invalid && createProductForm.get('category').touched">
+      Chưa chọn loại sản phẩm
+    </div>
+  </div>
+  <div class="form-group">
+    Chọn Nhà sản xuất :
+    <select formControlName="provider">
+      <option *ngFor="let provider of providers" [value]="provider.id">{{provider.name}}</option>
+    </select>
+    <div class="alert alert-danger" role="alert"
+         *ngIf="createProductForm.get('provider').invalid && createProductForm.get('provider').touched">
+      Chưa chọn nhà Sản xuất
+    </div>
   </div>
 
   <div class="form-group">
