@@ -13,11 +13,12 @@ import {Bill} from '../../interface/bill/bill';
 export class ListProductComponent implements OnInit {
   products: Product[];
   bill: Bill;
+  carts: string[];
 
   constructor(private productService: ProductServiceService,
               private userService: UserService,
               private cookieService: CookieService,
-              ) {
+  ) {
   }
 
   ngOnInit() {
@@ -32,5 +33,10 @@ export class ListProductComponent implements OnInit {
     );
 
 
+  }
+
+  saveCart(product: Product) {
+    this.cookieService.set('carts', String(this.carts.push(product.id.toString())));
+    console.log(this.cookieService.get('carts'));
   }
 }

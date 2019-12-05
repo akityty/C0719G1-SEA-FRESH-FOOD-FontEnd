@@ -27,6 +27,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {ContentComponent} from './header/content/content.component';
 import {SearchComponent} from './header/search/search.component';
 import { BuyNowComponent } from './FRESH-FOOD/shopping/buy-now/buy-now.component';
+import { ShopCartComponent } from './FRESH-FOOD/shopping/shop-cart/shop-cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { BuyNowComponent } from './FRESH-FOOD/shopping/buy-now/buy-now.component
     ContentComponent,
     SearchComponent,
     BuyNowComponent,
+    ShopCartComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,7 @@ import {UpdateProductComponent} from './FRESH-FOOD/product/update-product/update
 import {DeleteProductComponent} from './FRESH-FOOD/product/delete-product/delete-product.component';
 import {DetailProductComponent} from './FRESH-FOOD/product/detail-product/detail-product.component';
 import {BuyNowComponent} from './FRESH-FOOD/shopping/buy-now/buy-now.component';
+import {ShopCartComponent} from './FRESH-FOOD/shopping/shop-cart/shop-cart.component';
 
 
 const routes: Routes = [
@@ -84,6 +85,10 @@ const routes: Routes = [
   {
     path: 'listProduct/pay/:id',
     component: BuyNowComponent
+  },
+  {
+    path: 'listProduct/shopCart/:id',
+    component: ShopCartComponent
   }
 ];
 
