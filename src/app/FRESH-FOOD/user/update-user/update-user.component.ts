@@ -37,7 +37,7 @@ export class UpdateUserComponent implements OnInit {
       this.userService.updateUser(this.user).subscribe(
         next => {
           this.userService.userOnline.userName = '';
-          this.userService.userOnline.jwtToken = '';
+          this.userService.userOnline.accessToKen = '';
           this.userService.userOnline.password = '';
           this.cookieService.delete('username');
           this.cookieService.delete('jwtToken');

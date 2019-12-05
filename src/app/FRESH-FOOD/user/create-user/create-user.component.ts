@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user/user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../interface/user/user';
-import {Login} from '../../interface/user/login';
 import {CookieService} from 'ngx-cookie-service';
+import {Login} from '../../interface/user/login';
 
 @Component({
   selector: 'app-create-user',
@@ -28,12 +28,12 @@ export class CreateUserComponent implements OnInit {
 
   ngOnInit() {
     this.createUserForm = this.fb.group({
-        name: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
-        username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
-        confirmPassword: ['', Validators.required],
-      }, {validator: this.checkPasswords});
+      name: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+      username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
+      confirmPassword: ['', Validators.required],
+    }, {validator: this.checkPasswords});
   }
 
   onSubmit() {

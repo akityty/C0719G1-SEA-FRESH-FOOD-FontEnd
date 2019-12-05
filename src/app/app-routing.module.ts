@@ -14,6 +14,7 @@ import {ManagementListProductComponent} from './FRESH-FOOD/product/management-li
 import {UpdateProductComponent} from './FRESH-FOOD/product/update-product/update-product.component';
 import {DeleteProductComponent} from './FRESH-FOOD/product/delete-product/delete-product.component';
 import {DetailProductComponent} from './FRESH-FOOD/product/detail-product/detail-product.component';
+import {BuyNowComponent} from './FRESH-FOOD/shopping/buy-now/buy-now.component';
 
 
 const routes: Routes = [
@@ -26,11 +27,11 @@ const routes: Routes = [
     component: LoginUserComponent
   },
   {
-    path: 'auth/login',
+    path: 'login',
     component: LoginUserComponent
   },
   {
-    path: 'registered',
+    path: 'register',
     component: CreateUserComponent
   },
   {
@@ -54,8 +55,7 @@ const routes: Routes = [
   {
     path: 'listProduct',
     component: ListProductComponent,
-  },
-  {
+  }, {
     path: 'listProduct/detailProduct/:id',
     component: DetailProductComponent
   },
@@ -81,6 +81,10 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'listProduct/pay/:id',
+    component: BuyNowComponent
+  }
 ];
 
 @NgModule({

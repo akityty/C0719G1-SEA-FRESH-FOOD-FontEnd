@@ -8,8 +8,7 @@ import * as firebase from 'firebase';
 import {Picture} from '../../interface/product/picture';
 import {Provider} from '../../interface/product/provider';
 import {Category} from '../../interface/product/category';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-product',
@@ -28,7 +27,6 @@ export class CreateProductComponent implements OnInit {
   category: Category;
 
 
-  // tslint:disable-next-line:max-line-length
   constructor(private http: HttpClient, private fb: FormBuilder,
               private productService: ProductServiceService,
               private db: AngularFireDatabase,

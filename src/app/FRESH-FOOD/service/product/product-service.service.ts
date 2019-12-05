@@ -48,7 +48,7 @@ export class ProductServiceService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
     });
-    return this.http.get<Product>(`${this.API_URL_PRODUCT}/detail/${id}`, {headers});
+    return this.http.get<Product>(`${this.API_URL_PRODUCT}/${id}`, {headers});
   }
 
   deleteProduct(id: number): Observable<void> {

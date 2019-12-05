@@ -1,7 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from './FRESH-FOOD/service/user/user.service';
-import {CookieService} from 'ngx-cookie-service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,22 +8,9 @@ import {Router} from '@angular/router';
 
 export class AppComponent implements OnInit {
 
-  constructor(private userService: UserService, private cookieService: CookieService, private  router: Router) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.router.navigate(['listProduct']);
-    this.userService.userOnline.userName = this.cookieService.get('username');
-    this.userService.userOnline.jwtToken = this.cookieService.get('jwtToken');
-    this.userService.userOnline.password = window.sessionStorage.getItem('password');
-  }
-  logout() {
-    this.cookieService.delete('username');
-    this.cookieService.delete('jwtToken');
-    window.sessionStorage.removeItem('password');
-    this.userService.userOnline.userName = '';
-    this.userService.userOnline.jwtToken = '';
-    this.userService.userOnline.password = '';
-    window.location.reload();
   }
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user/user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CookieService} from 'ngx-cookie-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-user',
@@ -12,7 +13,7 @@ export class LoginUserComponent implements OnInit {
   loginForm: FormGroup;
 
 
-  constructor(private fb: FormBuilder, private userService: UserService, private cookieService: CookieService) {
+  constructor(private router: Router, private fb: FormBuilder, private userService: UserService, private cookieService: CookieService) {
   }
 
   ngOnInit() {
@@ -28,5 +29,9 @@ export class LoginUserComponent implements OnInit {
       this.userService.autoLogin(this.loginForm.value);
       window.sessionStorage.setItem('password', this.loginForm.get('password').value);
     }
+  }
+
+  onSelect() {
+    this.router.navigate(['register']);
   }
 }

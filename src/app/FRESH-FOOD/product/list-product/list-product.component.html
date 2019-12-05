@@ -1,12 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-3" *ngFor="let product of products">
-      <div>
-        <a [routerLink]="['detailProduct',product.id]">
-          <div><img [src]="product.picture[0].name" width="200px" height="200px"></div>
-          <div>{{product.name}}</div>
-          <div class="text-danger">{{product.price}}/Kg</div>
-        </a>
+    <div class="col-md-3 col-sm-6" *ngFor="let product of products">
+      <div class="product-grid4">
+        <div class="product-image4">
+          <a [routerLink]="['detailProduct',product.id]">
+            <img class="pic-1" [src]="product.picture[0].name">
+            <img class="pic-2" [src]="product.picture[1].name">
+          </a>
+          <ul class="social">
+            <li><a routerLink="shopCart" data-tip="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
+          </ul>
+        </div>
+        <div class="product-content">
+          <h3 class="title"><a href="#">{{product.name}}</a></h3>
+          <div class="price">
+            {{product.price}}/Kg
+          </div>
+          <a class="add-to-cart" [routerLink]="['pay', product.id]">Mua ngay!</a>
+        </div>
       </div>
     </div>
   </div>

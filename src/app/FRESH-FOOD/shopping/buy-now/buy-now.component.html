@@ -9,34 +9,31 @@
     <td>{{product.name}}</td>
   </tr>
   <tr>
-    <th>Category : </th>
-    <td>{{product.category.name}}</td>
-  </tr>
-  <tr>
     <th>Amount : </th>
     <td>{{product.amount}}</td>
   </tr>
   <tr>
     <th>Picture : </th>
-    <td *ngFor="let image of product.picture">
-      <img src="{{image.name}}" width="100px" height="100px" alt="">
+    <td>
+      <img src="{{product.picture[0].name}}" width="100px" height="100px" alt="">
     </td>
-  </tr>
-  <tr>
-    <th>Description : </th>
-    <td>{{product.description}}</td>
   </tr>
   <tr>
     <th>Price : </th>
     <td>{{product.price}}</td>
   </tr>
   <tr>
-    <th>Origin : </th>
-    <td>{{product.origin}}</td>
+    <th>Quantity : </th>
+    <td><input type="number" [value]="quantity" (change)="totalMoney($event.target.value)"/></td>
   </tr>
   <tr>
-    <th>Provider : </th>
-    <td>{{product.provider.name}}</td>
+    <th>Total : </th>
+    <td>{{total}}</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td><a class="btn btn-danger" (click)="pay()">Thanh toán</a>
+    </td>
   </tr>
 </table>
 

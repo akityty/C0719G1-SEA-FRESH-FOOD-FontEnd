@@ -15,7 +15,7 @@ export class ProductManagementComponent implements OnInit {
   }
   ngOnInit() {
     this.userService.userOnline.userName = this.cookieService.get('username');
-    this.userService.userOnline.jwtToken = this.cookieService.get('jwtToken');
+    this.userService.userOnline.accessToKen = this.cookieService.get('jwtToken');
     this.router.navigate(['productManagement/listProduct']);
   }
 

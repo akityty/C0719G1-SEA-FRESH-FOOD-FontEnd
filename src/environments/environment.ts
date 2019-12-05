@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyC6k06AUQeUPapr1i29N9w_4b_ST5l6oC8',
-    authDomain: 'fresh-food-1558d.firebaseapp.com',
-    databaseURL: 'https://fresh-food-1558d.firebaseio.com',
-    projectId: 'fresh-food-1558d',
-    storageBucket: 'fresh-food-1558d.appspot.com',
-    messagingSenderId: '1066164353694',
-    appId: '1:1066164353694:web:e0a235258e8876914ad98f',
-    measurementId: 'G-K9LF5258C0'
+    apiKey: 'AIzaSyCL_yJ_kS1Yhbis6Ast04tQ3zVJ7DqzAk0',
+    authDomain: 'freshfood-82f82.firebaseapp.com',
+    databaseURL: 'https://freshfood-82f82.firebaseio.com',
+    projectId: 'freshfood-82f82',
+    storageBucket: 'freshfood-82f82.appspot.com',
+    messagingSenderId: '68155201105',
+    appId: '1:68155201105:web:6071e869009b802473ca70',
+    measurementId: 'G-1H5GKK97T6'
   }
 };
 
