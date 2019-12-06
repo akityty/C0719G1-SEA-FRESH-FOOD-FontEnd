@@ -13,4 +13,5 @@ export interface Product {
   origin: string;
   provider: Provider;
   status: boolean;
+  total?: number;
 }

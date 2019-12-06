@@ -20,11 +20,11 @@
           </div>
         </div>
       </td>
-      <td data-th="Price">$1.99</td>
+      <td data-th="Price">{{product.price}}</td>
       <td data-th="Quantity">
-        <input type="number" class="form-control text-center" value="1">
+        <input type="number" class="form-control text-center" (change)="total($event.target.value, product)" value="1" >
       </td>
-      <td data-th="Subtotal" class="text-center">1.99</td>
+      <td data-th="Subtotal" class="text-center">{{product.total}}</td>
 
       <td class="actions" data-th="">
         <button class="btn btn-danger btn-sm" (click)="delete(i)"><i class="fa fa-trash-o"></i>Xóa</button>
@@ -32,14 +32,18 @@
     </tr>
     </tbody>
     <tfoot>
-    <tr class="visible-xs">
-      <td class="text-center"><strong>Total 1.99</strong></td>
-    </tr>
+
     <tr>
-      <td><button href="#" class="btn btn-warning" (click)="backToHome()"><i class="fa fa-angle-left"></i>Mua Thêm</button></td>
+      <td><button  class="btn btn-warning" (click)="backToHome()"><i class="fa fa-angle-left"></i>Mua Thêm</button></td>
       <td colspan="2" class="hidden-xs"></td>
-      <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-      <td><a href="#" class="btn btn-success btn-block">Thanh Toán <i class="fa fa-angle-right"></i></a></td>
+      <td class="hidden-xs text-center"><strong>Tổng Tiền : {{buy}}</strong></td>
+      <div class="alert alert-success" role="alert" *ngIf="check==='true'">
+        Đã thanh toán
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="check==='false'">
+        Lỗi
+      </div>
+      <td><button  class="btn btn-success btn-block" (click)="payAll()">Thanh Toán <i class="fa fa-angle-right"></i></button></td>
     </tr>
     </tfoot>
   </table>
