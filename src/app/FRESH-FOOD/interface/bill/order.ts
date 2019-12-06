@@ -1,4 +1,5 @@
+import {OrderItem} from './orderItem';
+
 export interface Order {
-  idProduct: number;
-  quantity: number;
+  orderItem: OrderItem[];
 }

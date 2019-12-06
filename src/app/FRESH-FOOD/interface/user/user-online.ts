@@ -1,8 +1,8 @@
 import {Role} from './role';
 
 export interface UserOnline {
-  userName?: string;
+  username?: string;
   password?: string;
   authorities?: Role[];
-  accessToKen?: string;
+  accessToken?: string;
 }

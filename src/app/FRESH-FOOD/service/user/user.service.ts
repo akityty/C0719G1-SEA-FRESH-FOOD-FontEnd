@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class UserService {
-  userOnline: UserOnline = {userName: '', accessToKen: ''};
+  userOnline: UserOnline = {username: '', accessToken: ''};
   private API_URL = 'http://localhost:8080/api/auth';
   check = '';
 
@@ -31,7 +31,7 @@ export class UserService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
     });
-    return this.http.get<User>(`${this.API_URL}/view/user/${this.userOnline.userName}`, {headers});
+    return this.http.get<User>(`${this.API_URL}/view/user/${this.userOnline.username}`, {headers});
   }
 
   updateUser(user: User): Observable<User> {
@@ -53,12 +53,12 @@ export class UserService {
         for (const role of next.authorities) {
           if (role.authority === 'ROLE_ADMIN') {
             this.cookieService.set('username', 'Admin');
-            this.cookieService.set('jwtToken', next.accessToKen);
+            this.cookieService.set('jwtToken', next.accessToken);
             window.sessionStorage.setItem('role', role.authority);
             this.router.navigate(['productManagement']);
           } else if (role.authority === 'ROLE_USER') {
-            this.cookieService.set('username', next.userName);
-            this.cookieService.set('jwtToken', next.accessToKen);
+            this.cookieService.set('username', next.username);
+            this.cookieService.set('jwtToken', next.accessToken);
             window.sessionStorage.setItem('role', role.authority);
             this.router.navigate(['listProduct']);
           }

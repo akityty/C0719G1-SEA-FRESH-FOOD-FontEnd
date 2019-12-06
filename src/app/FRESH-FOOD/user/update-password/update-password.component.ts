@@ -42,8 +42,8 @@ export class UpdatePasswordComponent implements OnInit {
       this.TransferFormDataToUser();
       this.userService.updatePasswordUser(this.user).subscribe(
         next => {
-          this.userService.userOnline.userName = '';
-          this.userService.userOnline.accessToKen = '';
+          this.userService.userOnline.username = '';
+          this.userService.userOnline.accessToken = '';
           this.userService.userOnline.password = '';
           this.cookieService.delete('username');
           this.cookieService.delete('jwtToken');

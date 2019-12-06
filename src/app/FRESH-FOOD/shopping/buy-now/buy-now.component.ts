@@ -4,7 +4,7 @@ import {Product} from '../../interface/product/product';
 import {ProductServiceService} from '../../service/product/product-service.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {UserBillService} from '../../service/bill/user-bill.service';
-import {Bill} from '../../interface/bill/bill';
+import {OrderItem} from '../../interface/bill/orderItem';
 import {Order} from '../../interface/bill/order';
 
 @Component({
@@ -17,8 +17,9 @@ export class BuyNowComponent implements OnInit {
   product: Product;
   quantity = 1;
   total: number;
-  bill: Bill = {bill: []};
-  order: Order;
+  orderItem: OrderItem;
+  order: Order = {orderItem: []};
+  check: string;
 
   constructor(private productService: ProductServiceService,
               private activatedRoute: ActivatedRoute,
@@ -39,24 +40,32 @@ export class BuyNowComponent implements OnInit {
   }
 
   createOdrder() {
-    this.order = {idProduct: this.product.id, quantity: this.quantity};
-    this.bill.bill.push(this.order);
+    this.orderItem = {productId: this.product.id, quantity: this.quantity};
+    this.order.orderItem.push(this.orderItem);
   }
 
   totalMoney(value) {
-    this.quantity = value;
-    this.total = value * this.product.price;
+    if (value > 0) {
+      this.quantity = value;
+      this.total = value * this.product.price;
+    } else {
+      this.quantity = 0;
+      this.total = 0;
+    }
   }
 
 
   pay() {
     this.createOdrder();
-    console.log(this.bill);
-    // this.userBillService.saveBill();
+    console.log(this.order);
+    this.userBillService.saveBill(this.order).subscribe(next => {
+      this.check = 'true';
+    }, error => {
+      this.check = 'false';
+    });
   }
 
   bachToHome() {
     this.router.navigate(['listProduct']);
-
   }
 }

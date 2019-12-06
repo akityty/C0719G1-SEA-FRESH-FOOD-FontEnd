@@ -15,16 +15,16 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
     this.router.navigate(['listProduct']);
-    this.userService.userOnline.userName = this.cookieService.get('username');
-    this.userService.userOnline.accessToKen = this.cookieService.get('jwtToken');
+    this.userService.userOnline.username = this.cookieService.get('username');
+    this.userService.userOnline.accessToken = this.cookieService.get('jwtToken');
     this.userService.userOnline.password = window.sessionStorage.getItem('password');
   }
   logout() {
     this.cookieService.delete('username');
     this.cookieService.delete('jwtToken');
     window.sessionStorage.removeItem('password');
-    this.userService.userOnline.userName = '';
-    this.userService.userOnline.accessToKen = '';
+    this.userService.userOnline.username = '';
+    this.userService.userOnline.accessToken = '';
     this.userService.userOnline.password = '';
     window.location.reload();
   }

@@ -12,7 +12,7 @@ checkRole: string;
   constructor(private userService: UserService, private  router: Router) { }
 
   ngOnInit() {
-  this.checkRole = this.userService.userOnline.userName;
+  this.checkRole = this.userService.userOnline.username;
   }
   listProduct(){
     this.router.navigate(['productManagement/listProduct']);

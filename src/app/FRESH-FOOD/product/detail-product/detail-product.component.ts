@@ -28,6 +28,5 @@ export class DetailProductComponent implements OnInit {
   }
   bachToHome(){
     this.router.navigate(['listProduct']);
-
   }
 }

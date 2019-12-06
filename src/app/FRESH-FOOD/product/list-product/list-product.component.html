@@ -8,7 +8,7 @@
             <img class="pic-2" [src]="product.picture[1].name">
           </a>
           <ul class="social">
-            <li><a [routerLink]="['shopCart',product.id]" (click)="saveCart(product)" data-tip="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
+            <li><a (click)="saveCart(product)" data-tip="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
           </ul>
         </div>
         <div class="product-content">

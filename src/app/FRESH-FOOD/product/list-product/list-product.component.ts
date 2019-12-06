@@ -3,7 +3,7 @@ import {Product} from '../../interface/product/product';
 import {ProductServiceService} from '../../service/product/product-service.service';
 import {UserService} from '../../service/user/user.service';
 import {CookieService} from 'ngx-cookie-service';
-import {Bill} from '../../interface/bill/bill';
+import {OrderItem} from '../../interface/bill/orderItem';
 
 @Component({
   selector: 'app-list-product',
@@ -12,18 +12,17 @@ import {Bill} from '../../interface/bill/bill';
 })
 export class ListProductComponent implements OnInit {
   products: Product[];
-  bill: Bill;
-  carts: string[];
+  bill: OrderItem;
+  carts: Product[];
 
   constructor(private productService: ProductServiceService,
               private userService: UserService,
-              private cookieService: CookieService,
-  ) {
+              private cookieService: CookieService,) {
   }
 
   ngOnInit() {
-    this.userService.userOnline.userName = this.cookieService.get('username');
-    this.userService.userOnline.accessToKen = this.cookieService.get('jwtToken');
+    this.userService.userOnline.username = this.cookieService.get('username');
+    this.userService.userOnline.accessToken = this.cookieService.get('jwtToken');
     this.productService.listProduct().subscribe(next => {
         this.products = next;
       },
@@ -36,7 +35,8 @@ export class ListProductComponent implements OnInit {
   }
 
   saveCart(product: Product) {
-    this.cookieService.set('carts', String(this.carts.push(product.id.toString())));
-    console.log(this.cookieService.get('carts'));
+    console.log(product);
+    // @ts-ignore
+    this.cookieService.set('carts', this.carts.push(product));
   }
 }

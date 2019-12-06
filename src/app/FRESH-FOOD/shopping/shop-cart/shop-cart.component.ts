@@ -4,7 +4,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {UserBillService} from '../../service/bill/user-bill.service';
 import {Subscription} from 'rxjs';
 import {Product} from '../../interface/product/product';
-import {Bill} from '../../interface/bill/bill';
+import {OrderItem} from '../../interface/bill/orderItem';
 import {Order} from '../../interface/bill/order';
 
 @Component({
@@ -18,7 +18,7 @@ export class ShopCartComponent implements OnInit {
   products: Product[];
   quantity = 1;
   total: number;
-  bill: Bill = {bill: []};
+  // bill: OrderItem = {orderItem: []};
   order: Order;
 
   constructor(private productService: ProductServiceService,
@@ -28,15 +28,15 @@ export class ShopCartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sub = this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = paramMap.get('id');
-      this.productService.detailProduct(id).subscribe(next => {
-        this.product = next;
-        this.totalMoney(this.quantity);
-      }, error => {
-        console.log(error);
-      });
-    });
+    // this.sub = this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+    //   const id = paramMap.get('id');
+    //   this.productService.detailProduct(id).subscribe(next => {
+    //     this.product = next;
+    //     this.totalMoney(this.quantity);
+    //   }, error => {
+    //     console.log(error);
+    //   });
+    // });
   }
 
   totalMoney(value) {

@@ -21,7 +21,7 @@
 }
 
 .threeD {
-  color: darkgrey;
+  color: #08ff08;
   white-space: nowrap;
   transform: translate(0%, 0%);
   letter-spacing: 0.1em;

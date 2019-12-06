@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {Observable} from 'rxjs';
-import {Bill} from '../../interface/bill/bill';
+import {OrderItem} from '../../interface/bill/orderItem';
+import {Order} from '../../interface/bill/order';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +21,11 @@ export class UserBillService {
   //   return this.http.get<UserBill>(`${this.API_URL_BILL}/list`, {headers});
   // }
 
-  saveBill(bill: Bill): Observable<Bill> {
+  saveBill(orders: Order): Observable<OrderItem> {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
     });
-    return this.http.post<Bill>(`${this.API_URL_BILL}/save`, bill, {headers});
+    return this.http.post<OrderItem>(`${this.API_URL_BILL}/save`, orders, {headers});
   }
 
   // deleteBill(): Observable<UserBill> {
