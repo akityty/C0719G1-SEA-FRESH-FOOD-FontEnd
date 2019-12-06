@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="alert alert-success" role="alert" *ngIf="check" >
+    <div class="text-center">bạn có {{billService.index}} Sản phẩm trong giỏ hàng</div>
+  </div>
   <div class="row">
     <div class="col-md-3 col-sm-6" *ngFor="let product of products">
       <div class="product-grid4">
@@ -8,11 +11,11 @@
             <img class="pic-2" [src]="product.picture[1].name">
           </a>
           <ul class="social">
-            <li><a (click)="saveCart(product)" data-tip="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
+            <li><button (click)="saveCart(product)"  data-tip="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></button></li>
           </ul>
         </div>
         <div class="product-content">
-          <h3 class="title"><a href="#">{{product.name}}</a></h3>
+          <h3 class="title">{{product.name}}</h3>
           <div class="price">
             {{product.price}}/Kg
           </div>

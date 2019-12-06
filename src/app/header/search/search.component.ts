@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Product} from '../../FRESH-FOOD/interface/product/product';
+import {UserBillService} from '../../FRESH-FOOD/service/bill/user-bill.service';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private billService: UserBillService) {
+  }
 
   ngOnInit() {
   }
+
 
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductServiceService} from '../../service/product/product-service.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {UserBillService} from '../../service/bill/user-bill.service';
@@ -12,14 +12,9 @@ import {Order} from '../../interface/bill/order';
   templateUrl: './shop-cart.component.html',
   styleUrls: ['./shop-cart.component.css']
 })
-export class ShopCartComponent implements OnInit {
-  sub: Subscription;
-  product: Product;
-  products: Product[];
-  quantity = 1;
-  total: number;
-  // bill: OrderItem = {orderItem: []};
-  order: Order;
+export class ShopCartComponent implements OnInit, OnDestroy {
+  carts: Product[] = [];
+
 
   constructor(private productService: ProductServiceService,
               private activatedRoute: ActivatedRoute,
@@ -27,20 +22,19 @@ export class ShopCartComponent implements OnInit {
               private  userBillService: UserBillService) {
   }
 
-  ngOnInit() {
-    // this.sub = this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-    //   const id = paramMap.get('id');
-    //   this.productService.detailProduct(id).subscribe(next => {
-    //     this.product = next;
-    //     this.totalMoney(this.quantity);
-    //   }, error => {
-    //     console.log(error);
-    //   });
-    // });
+  ngOnDestroy() {
+    window.localStorage.setItem('carts', JSON.stringify(this.carts));
   }
 
-  totalMoney(value) {
-    this.quantity = value;
-    this.total = value * this.product.price;
+  ngOnInit() {
+    this.carts = JSON.parse(window.localStorage.getItem('carts'));
+    console.log(this.carts);
+  }
+
+  delete(value) {
+    this.carts.splice(value, 1);
+  }
+  backToHome() {
+    this.router.navigate(['listProduct']);
   }
 }

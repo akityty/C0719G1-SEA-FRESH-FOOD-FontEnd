@@ -9,17 +9,12 @@ import {Order} from '../../interface/bill/order';
   providedIn: 'root'
 })
 export class UserBillService {
-
+index = 0 ;
   private API_URL_BILL = 'http://localhost:8080/order';
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
-  // getBill(): Observable<UserBill> {
-  //   const headers = new HttpHeaders({
-  //     Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
-  //   });
-  //   return this.http.get<UserBill>(`${this.API_URL_BILL}/list`, {headers});
-  // }
+
 
   saveBill(orders: Order): Observable<OrderItem> {
     const headers = new HttpHeaders({
@@ -28,10 +23,4 @@ export class UserBillService {
     return this.http.post<OrderItem>(`${this.API_URL_BILL}/save`, orders, {headers});
   }
 
-  // deleteBill(): Observable<UserBill> {
-  //   const headers = new HttpHeaders({
-  //     Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
-  //   });
-  //   return this.http.get<UserBill>(`${this.API_URL_BILL}/delete`, {headers});
-  // }
 }

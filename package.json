@@ -24,6 +24,7 @@
     "bootstrap": "^4.4.1",
     "cookie": "^0.4.0",
     "firebase": "^7.5.0",
+    "local-storage": "^2.0.0",
     "ngx-cookie-service": "^2.2.0",
     "npm": "^6.13.2",
     "rxjs": "~6.4.0",

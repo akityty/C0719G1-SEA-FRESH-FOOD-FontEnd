@@ -24,7 +24,7 @@
   </tr>
   <tr>
     <th>Quantity : </th>
-    <td><input type="number" [value]="quantity" (change)="totalMoney($event.target.value)"/></td>
+    <td><input type="number" [(ngModel)]="quantity" (change)="totalMoney($event.target.value)"/></td>
   </tr>
   <tr>
     <th>Total : </th>

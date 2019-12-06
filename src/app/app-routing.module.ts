@@ -86,6 +86,14 @@ const routes: Routes = [
     path: 'listProduct/pay/:id',
     component: BuyNowComponent
   },
+  {
+    path: 'shopCart',
+    component: ShopCartComponent
+  },
+  {
+    path: 'shopCart/listProduct',
+    component: ListProductComponent
+  },
 ];
 
 @NgModule({
