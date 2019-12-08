@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UserBillService} from '../../service/bill/user-bill.service';
-import {Order} from '../../interface/bill/order';
 import {OrdersAwaiting} from '../../interface/bill/orders-awaiting';
 
 @Component({
@@ -23,10 +22,10 @@ export class ManagementListOrderComponent implements OnInit {
     });
   }
 
-  payAll(id: number) {
-    console.log(id);
+  payAll(id: number, i: number) {
     this.userBillService.confirmPayment(id).subscribe(next => {
       this.check = true;
+      this.listOrder.splice(i, 1);
     }, error => {
       this.check = false;
     });

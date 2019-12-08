@@ -88,7 +88,7 @@ const routes: Routes = [
     component: BuyNowComponent
   },
   {
-    path: 'shopCart',
+    path: 'listProduct/shopCart',
     component: ShopCartComponent
   },
   {

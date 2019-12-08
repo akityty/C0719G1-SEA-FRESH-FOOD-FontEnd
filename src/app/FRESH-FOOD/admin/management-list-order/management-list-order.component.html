@@ -19,7 +19,7 @@
       <td style="width:25%" data-th="Product">{{order.user.name}}</td>
       <td style="width:25%" data-th="Subtotal" class="text-center">{{order.date}}</td>
       <td style="width:25%" data-th="Subtotal" class="text-center">{{order.total}}</td>
-      <td style="width:25%"><button class="btn btn-success btn-block" (click)="payAll(order.id)">Xác nhận thanh toán</button></td>
+      <td style="width:25%"><button class="btn btn-success btn-block" (click)="payAll(order.id, i)">Xác nhận thanh toán</button></td>
     </tr>
     </tbody>
   </table>

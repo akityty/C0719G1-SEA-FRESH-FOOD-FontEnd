@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {OrderItem} from '../../interface/bill/orderItem';
 import {Order} from '../../interface/bill/order';
 import {OrdersAwaiting} from '../../interface/bill/orders-awaiting';
+import {DateForm} from '../../interface/bill/date-form';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ index = 0 ;
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
     });
-    return this.http.put(`${this.API_URL_BILL}/edit/${id}`, {headers});
+    return this.http.put(`${this.API_URL_BILL}/edit/${id}`, id, {headers});
   }
 
   listOrderProcessing(): Observable<OrdersAwaiting[]> {
@@ -38,5 +39,10 @@ index = 0 ;
     });
     return this.http.get<OrdersAwaiting[]>(`${this.API_URL_BILL}/getOrdersByStatus/Processing`, {headers});
   }
-
+  getOrdersByDate(dateForm: DateForm): Observable<OrdersAwaiting[]> {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
+    });
+    return this.http.post<OrdersAwaiting[]>(`${this.API_URL_BILL}/getTotalByOrders`, dateForm,   {headers});
+  }
 }
