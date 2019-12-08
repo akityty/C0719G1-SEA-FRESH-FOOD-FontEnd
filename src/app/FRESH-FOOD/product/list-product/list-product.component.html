@@ -1,6 +1,8 @@
 <div class="container">
-  <div class="alert alert-success" role="alert" *ngIf="check" >
-    <div class="text-center">bạn có {{billService.index}} Sản phẩm trong giỏ hàng</div>
+  <div class="alert alert-danger" role="alert" *ngIf="check" id="shop_cart">
+    <div><a  routerLink="shopCart">
+      <img src="../../assets/image/shopping_cart_icon.png">
+    </a>({{billService.index}})</div>
   </div>
   <div class="row">
     <div class="col-md-3 col-sm-6" *ngFor="let product of products">

@@ -38,12 +38,12 @@
       <td colspan="2" class="hidden-xs"></td>
       <td class="hidden-xs text-center"><strong>Tổng Tiền : {{buy}}</strong></td>
       <div class="alert alert-success" role="alert" *ngIf="check==='true'">
-        Đã thanh toán
+        Đơn Hàng đang được xử lý
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="check==='false'">
         Lỗi
       </div>
-      <td><button  class="btn btn-success btn-block" (click)="payAll()">Thanh Toán <i class="fa fa-angle-right"></i></button></td>
+      <td><button  class="btn btn-success btn-block" (click)="payAll()"> Đặt Hàng <i class="fa fa-angle-right"></i></button></td>
     </tr>
     </tfoot>
   </table>

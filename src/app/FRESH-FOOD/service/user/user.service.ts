@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 })
 export class UserService {
   userOnline: UserOnline = {username: '', accessToken: ''};
-  private API_URL = 'http://localhost:8080/api/auth';
+  private API_URL = 'https://fresh-food-2510.herokuapp.com/api/auth';
   check = '';
 
   constructor(private http: HttpClient, private cookieService: CookieService, private  router: Router) {
@@ -56,6 +56,7 @@ export class UserService {
             this.cookieService.set('jwtToken', next.accessToken);
             window.sessionStorage.setItem('role', role.authority);
             this.router.navigate(['productManagement']);
+            break;
           } else if (role.authority === 'ROLE_USER') {
             this.cookieService.set('username', next.username);
             this.cookieService.set('jwtToken', next.accessToken);

@@ -11,9 +11,9 @@ import {Provider} from '../../interface/product/provider';
   providedIn: 'root'
 })
 export class ProductServiceService {
-  private API_URL_PRODUCT = 'http://localhost:8080/product';
-  private API_URL_CATEGORY = 'http://localhost:8080/category';
-  private API_URL_PROVIDER = 'http://localhost:8080/provider';
+  private API_URL_PRODUCT = 'https://fresh-food-2510.herokuapp.com/product';
+  private API_URL_CATEGORY = 'https://fresh-food-2510.herokuapp.com/category';
+  private API_URL_PROVIDER = 'https://fresh-food-2510.herokuapp.com/provider';
 
 
   constructor(private http: HttpClient, private cookieService: CookieService) {

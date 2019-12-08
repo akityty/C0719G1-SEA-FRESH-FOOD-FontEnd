@@ -14,8 +14,8 @@ import { HomeUserComponent } from './FRESH-FOOD/user/home-user/home-user.compone
 import { environment } from '../environments/environment';
 import { CreateProductComponent } from './FRESH-FOOD/product/create-product/create-product.component';
 import { ListProductComponent } from './FRESH-FOOD/product/list-product/list-product.component';
-import { ProductManagementComponent } from './FRESH-FOOD/product/product-management/product-management.component';
-import { ManagementListProductComponent } from './FRESH-FOOD/product/management-list-product/management-list-product.component';
+import { ProductManagementComponent } from './FRESH-FOOD/admin/product-management/product-management.component';
+import { ManagementListProductComponent } from './FRESH-FOOD/admin/management-list-product/management-list-product.component';
 import { UpdateProductComponent } from './FRESH-FOOD/product/update-product/update-product.component';
 import { DeleteProductComponent } from './FRESH-FOOD/product/delete-product/delete-product.component';
 import { DetailProductComponent } from './FRESH-FOOD/product/detail-product/detail-product.component';
@@ -28,6 +28,7 @@ import {ContentComponent} from './header/content/content.component';
 import {SearchComponent} from './header/search/search.component';
 import { BuyNowComponent } from './FRESH-FOOD/shopping/buy-now/buy-now.component';
 import { ShopCartComponent } from './FRESH-FOOD/shopping/shop-cart/shop-cart.component';
+import { ManagementListOrderComponent } from './FRESH-FOOD/admin/management-list-order/management-list-order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { ShopCartComponent } from './FRESH-FOOD/shopping/shop-cart/shop-cart.com
     SearchComponent,
     BuyNowComponent,
     ShopCartComponent,
+    ManagementListOrderComponent,
   ],
   imports: [
     BrowserModule,

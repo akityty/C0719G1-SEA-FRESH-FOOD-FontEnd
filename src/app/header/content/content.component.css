@@ -3,7 +3,7 @@
 }
 
 .navbar-nav .nav-link  {
+  color: #28a745 !important;
   padding-right: 2.5rem;
   padding-left: 2rem;
-  color: #91ad41;
 }

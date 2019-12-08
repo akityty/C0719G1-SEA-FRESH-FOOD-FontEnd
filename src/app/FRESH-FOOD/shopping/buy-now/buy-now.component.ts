@@ -57,7 +57,6 @@ export class BuyNowComponent implements OnInit {
 
   pay() {
     this.createOdrder();
-    console.log(this.order);
     this.userBillService.saveBill(this.order).subscribe(next => {
       this.check = 'true';
     }, error => {

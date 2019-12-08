@@ -17,4 +17,7 @@ checkRole: string;
   listProduct(){
     this.router.navigate(['productManagement/listProduct']);
   }
+  listOrder(){
+    this.router.navigate(['listOrder']);
+  }
 }

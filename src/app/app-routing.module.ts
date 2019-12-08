@@ -9,13 +9,14 @@ import {UpdatePasswordComponent} from './FRESH-FOOD/user/update-password/update-
 import {HomeUserComponent} from './FRESH-FOOD/user/home-user/home-user.component';
 import {CreateProductComponent} from './FRESH-FOOD/product/create-product/create-product.component';
 import {ListProductComponent} from './FRESH-FOOD/product/list-product/list-product.component';
-import {ProductManagementComponent} from './FRESH-FOOD/product/product-management/product-management.component';
-import {ManagementListProductComponent} from './FRESH-FOOD/product/management-list-product/management-list-product.component';
+import {ProductManagementComponent} from './FRESH-FOOD/admin/product-management/product-management.component';
+import {ManagementListProductComponent} from './FRESH-FOOD/admin/management-list-product/management-list-product.component';
 import {UpdateProductComponent} from './FRESH-FOOD/product/update-product/update-product.component';
 import {DeleteProductComponent} from './FRESH-FOOD/product/delete-product/delete-product.component';
 import {DetailProductComponent} from './FRESH-FOOD/product/detail-product/detail-product.component';
 import {BuyNowComponent} from './FRESH-FOOD/shopping/buy-now/buy-now.component';
 import {ShopCartComponent} from './FRESH-FOOD/shopping/shop-cart/shop-cart.component';
+import {ManagementListOrderComponent} from './FRESH-FOOD/admin/management-list-order/management-list-order.component';
 
 
 const routes: Routes = [
@@ -93,6 +94,10 @@ const routes: Routes = [
   {
     path: 'shopCart/listProduct',
     component: ListProductComponent
+  },
+  {
+    path: 'listOrder',
+    component: ManagementListOrderComponent
   },
 ];
 

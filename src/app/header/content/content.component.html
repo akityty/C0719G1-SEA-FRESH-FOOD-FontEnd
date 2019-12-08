@@ -9,14 +9,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="#">Trang chủ<span class="sr-only">(current)</span></a>
+          <a  class="nav-item nav-link active" href="#">Trang chủ<span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="#">Giới thiệu</a>
           <a class="nav-item nav-link" href="#">Sản phẩm</a>
           <a class="nav-item nav-link" href="#">Tin tức</a>
-          <a class="nav-item nav-link" routerLink="login" routerLinkActive="active" *ngIf="userService.userOnline.username==''">Đăng nhập</a>
-          <a class="nav-item nav-link" routerLink="homeUser" routerLinkActive="active" *ngIf="userService.userOnline.username!=''">{{userService.userOnline.username}}</a>
-          <a class="nav-item nav-link" routerLink="register" routerLinkActive="active" *ngIf="userService.userOnline.username==''">Đăng ký</a>
-          <a class="nav-item nav-link"  (click)="logout()" *ngIf="userService.userOnline.username!=''">Đăng xuất</a>
+          <div *ngIf="userService.userOnline.username==''" class="nav-item nav-link">
+          <a class="text-success" routerLink="login" routerLinkActive="active" >Đăng nhập</a> |
+          <a class="text-success" routerLink="register" routerLinkActive="active" >Đăng ký</a>
+          </div>
+          <div *ngIf="userService.userOnline.username!=''" class="nav-item nav-link">
+          <a class="text-success" routerLink="homeUser" routerLinkActive="active">{{userService.userOnline.username}}</a> |
+          <a class="text-success" (click)="logout()" routerLinkActive="active" >Đăng xuất</a>
+          </div>
         </div>
       </div>
     </nav>

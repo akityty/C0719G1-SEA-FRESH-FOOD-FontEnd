@@ -59,7 +59,7 @@ export class CreateUserComponent implements OnInit {
       username: this.createUserForm.get('username').value,
       email: this.createUserForm.get('email').value,
       password: this.createUserForm.get('password').value,
-      role: ['user']
+      role: ['admin']
     };
   }
 }

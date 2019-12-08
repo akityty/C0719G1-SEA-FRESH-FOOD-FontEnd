@@ -68,10 +68,10 @@ export class ShopCartComponent implements OnInit, OnDestroy {
       this.listProduct = {productId: product.id, quantity: product.amount};
       this.bill.orderItem.push(this.listProduct);
     }
-
     this.userBillService.saveBill(this.bill).subscribe(next => {
       this.check = 'true';
       this.carts.splice(0);
+      window.localStorage.removeItem('carts');
     }, error => {
       this.check = 'false';
     });

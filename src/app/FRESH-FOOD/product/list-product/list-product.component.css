@@ -32,4 +32,17 @@
 .product-grid4 .add-to-cart:hover{background-color:#f70707;box-shadow:0 0 10px rgba(0,0,0,.5)}
 @media only screen and (max-width:990px){.product-grid4{margin-bottom:30px}
 }
+#shop_cart {
+  top: 0;
+  right: -20px;
+  position: fixed;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+#shop_cart a img {
+  height: 20px;
+  width: auto;
+  color: red;
+}
 
