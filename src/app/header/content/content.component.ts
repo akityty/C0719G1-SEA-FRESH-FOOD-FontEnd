@@ -28,5 +28,4 @@ export class ContentComponent implements OnInit {
     this.userService.userOnline.password = '';
     window.location.reload();
   }
-
 }

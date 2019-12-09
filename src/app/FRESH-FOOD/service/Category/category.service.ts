@@ -9,6 +9,8 @@ import {Product} from '../../interface/product/product';
 })
 export class CategoryService {
   private API_URL_CATEGORY = 'https://fresh-food-2510.herokuapp.com/category';
+  private API_URL_PRODUCT = 'https://fresh-food-2510.herokuapp.com/product';
+
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
@@ -21,9 +23,6 @@ export class CategoryService {
   }
 
   findAllProductByIdCategory(id: number): Observable<Product[]> {
-    const headers = new HttpHeaders({
-      Authorization: 'Bearer ' + this.cookieService.get('jwtToken')
-    });
-    return this.http.post<Product[]>(`${this.API_URL_CATEGORY}/getAllByCategory/${id}`, id, {headers});
+    return this.http.get<Product[]>(`${this.API_URL_PRODUCT}/getAllByCategory/${id}` );
   }
 }

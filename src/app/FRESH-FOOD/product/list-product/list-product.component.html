@@ -8,12 +8,11 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-2">
+    <div class="col-md-2" id="sidebar">
       <div>Danh sách sản phẩm</div>
       <hr>
       <br>
-      <div class="row" *ngFor="let category of listCategory"><a
-                           (click)="searchByCategory(category.id)">- {{category.name}}</a></div>
+      <div class="row" *ngFor="let category of listCategory"><a (click)="searchByCategory(category.id)" id="text">{{category.name}}</a></div>
     </div>
     <div class="col-md-10">
       <div>Tất cả sản phẩm</div>
