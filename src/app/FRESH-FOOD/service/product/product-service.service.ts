@@ -57,6 +57,12 @@ export class ProductServiceService {
     });
     return this.http.delete<void>(`${this.API_URL_PRODUCT}/delete/${id}`, {headers});
   }
+
+  searchByName(name: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.API_URL_PRODUCT}/findAllByName?name=${name}`);
+  }
+
+
 }
 
 

@@ -6,6 +6,8 @@ import {CookieService} from 'ngx-cookie-service';
 import {OrderItem} from '../../interface/bill/orderItem';
 import {Router} from '@angular/router';
 import {UserBillService} from '../../service/bill/user-bill.service';
+import {Category} from '../../interface/product/category';
+import {CategoryService} from '../../service/Category/category.service';
 
 @Component({
   selector: 'app-list-product',
@@ -14,16 +16,18 @@ import {UserBillService} from '../../service/bill/user-bill.service';
 })
 export class ListProductComponent implements OnInit, OnDestroy {
   products: Product[] = [];
-  bill: OrderItem;
   carts: Product[] = [];
   check = false;
+  searchName = '';
+  listCategory: Category[];
 
 
   constructor(private productService: ProductServiceService,
               private userService: UserService,
               private cookieService: CookieService,
               private  router: Router,
-              private billService: UserBillService) {
+              private billService: UserBillService,
+              private categoryService: CategoryService) {
   }
 
   ngOnDestroy() {
@@ -31,6 +35,11 @@ export class ListProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.productService.listCategory().subscribe(next => {
+      this.listCategory = next;
+    }, error => {
+      console.log(error);
+    });
     this.check = false;
     this.carts = JSON.parse(window.localStorage.getItem('carts'));
     this.userService.userOnline.username = this.cookieService.get('username');
@@ -45,8 +54,28 @@ export class ListProductComponent implements OnInit, OnDestroy {
   }
 
   saveCart(product: Product) {
-        this.carts.push(product);
-        this.billService.index = this.carts.length;
-        this.check = true;
+    this.carts.push(product);
+    this.billService.index = this.carts.length;
+    this.check = true;
+  }
+
+  searchByName(value) {
+    this.searchName = value;
+  }
+
+  search() {
+    this.productService.searchByName(this.searchName).subscribe(next => {
+      this.products = next;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  searchByCategory(id: number) {
+    this.categoryService.findAllProductByIdCategory(id).subscribe(next => {
+      this.products = next;
+    }, error => {
+      console.log(error);
+    });
   }
 }

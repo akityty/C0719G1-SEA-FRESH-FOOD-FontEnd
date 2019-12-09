@@ -60,7 +60,7 @@ export class BuyNowComponent implements OnInit {
     this.userBillService.saveBill(this.order).subscribe(next => {
       this.check = 'true';
     }, error => {
-      this.check = 'false';
+      this.router.navigate(['login']);
     });
   }
 

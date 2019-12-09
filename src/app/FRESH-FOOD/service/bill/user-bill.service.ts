@@ -6,6 +6,7 @@ import {OrderItem} from '../../interface/bill/orderItem';
 import {Order} from '../../interface/bill/order';
 import {OrdersAwaiting} from '../../interface/bill/orders-awaiting';
 import {DateForm} from '../../interface/bill/date-form';
+import {Product} from '../../interface/product/product';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,6 @@ import {DateForm} from '../../interface/bill/date-form';
 export class UserBillService {
 index = 0 ;
   private API_URL_BILL = 'https://fresh-food-2510.herokuapp.com/order';
-
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
@@ -45,4 +45,5 @@ index = 0 ;
     });
     return this.http.post<OrdersAwaiting[]>(`${this.API_URL_BILL}/getTotalByOrders`, dateForm,   {headers});
   }
+
 }

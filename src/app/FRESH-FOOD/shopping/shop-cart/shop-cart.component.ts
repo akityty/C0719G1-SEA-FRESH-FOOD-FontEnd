@@ -73,7 +73,7 @@ export class ShopCartComponent implements OnInit, OnDestroy {
       this.carts.splice(0);
       window.localStorage.removeItem('carts');
     }, error => {
-      this.check = 'false';
+      this.router.navigate(['login']);
     });
   }
 }

@@ -29,6 +29,7 @@ import {SearchComponent} from './header/search/search.component';
 import { BuyNowComponent } from './FRESH-FOOD/shopping/buy-now/buy-now.component';
 import { ShopCartComponent } from './FRESH-FOOD/shopping/shop-cart/shop-cart.component';
 import { ManagementListOrderComponent } from './FRESH-FOOD/admin/management-list-order/management-list-order.component';
+import { CreateCategoryComponent } from './FRESH-FOOD/category/create-category/create-category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { ManagementListOrderComponent } from './FRESH-FOOD/admin/management-list
     BuyNowComponent,
     ShopCartComponent,
     ManagementListOrderComponent,
+    CreateCategoryComponent,
   ],
   imports: [
     BrowserModule,
